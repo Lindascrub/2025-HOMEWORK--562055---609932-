@@ -1,4 +1,6 @@
-package progetto;
+package it.uniroma3.diadia;
+
+
 
 import java.util.Scanner;
 
@@ -14,12 +16,7 @@ import java.util.Scanner;
  * @version base
  */
 
-
 public class DiaDia {
-
-
-
-
 
 	static final private String MESSAGGIO_BENVENUTO = ""+
 			"Ti trovi nell'Universita', ma oggi e' diversa dal solito...\n" +
@@ -31,17 +28,17 @@ public class DiaDia {
 			"o regalarli se pensi che possano ingraziarti qualcuno.\n\n"+
 			"Per conoscere le istruzioni usa il comando 'aiuto'.";
 	
-	static final private String[] elencoComandi = {"vai", "aiuto", "fine"};
+	static final private String[] elencoComandi = {"vai", "aiuto", "fine", "prendi", "posa"};
 
 	private Partita partita;
+	private Scanner scannerDiLinee;
 
 	public DiaDia() {
 		this.partita = new Partita();
 	}
-
 	public void gioca() {
 		String istruzione; 
-		Scanner scannerDiLinee;
+
 
 		System.out.println(MESSAGGIO_BENVENUTO);
 		scannerDiLinee = new Scanner(System.in);		
@@ -66,6 +63,8 @@ public class DiaDia {
 			this.vai(comandoDaEseguire.getParametro());
 		else if (comandoDaEseguire.getNome().equals("aiuto"))
 			this.aiuto();
+		else if (comandoDaEseguire.getNome().equals("prendi"))
+			this.prendi(comandoDaEseguire.getParametro());
 		else
 			System.out.println("Comando sconosciuto");
 		if (this.partita.vinta()) {
@@ -112,9 +111,37 @@ public class DiaDia {
 		System.out.println("Grazie di aver giocato!");  // si desidera smettere
 	}
 
+	private void prendi(String nomeAttrezzo) {
+		if( nomeAttrezzo == null) {
+			System.out.printf("Che attrezzo vuoi prendere?\nAttrezzo inesistente!\n");
+		}
+		else {
+			Stanza stanzaCorrente = this.partita.getLabirinto().getStanzaCorrente();
+		 if (!stanzaCorrente.hasAttrezzo(nomeAttrezzo)) {
+			System.out.printf("Che attrezzo vuoi prendere?\\nAttrezzo non presente\n");
+		 }
+		 else {
+		 Attrezzo attrezzoPreso = stanzaCorrente.getAttrezzo(nomeAttrezzo);
+		if(this.partita.getGiocatore().prendereAttrezzo(attrezzoPreso)) {
+			stanzaCorrente.removeAttrezzo(nomeAttrezzo);
+		}
+		else {
+			System.out.println("La borsa è piena!");
+		}
+		 }
+		}
+
+		
+		System.out.println(partita.getStanzaCorrente().getDescrizione());
+		}
+
+			
+		
+	
+	
+	
 	public static void main(String[] argc) {
 		DiaDia gioco = new DiaDia();
 		gioco.gioca();
 	}
-
 }

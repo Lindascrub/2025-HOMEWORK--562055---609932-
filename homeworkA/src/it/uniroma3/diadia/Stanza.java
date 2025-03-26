@@ -1,4 +1,4 @@
-package progetto;
+package it.uniroma3.diadia;
 
 
 
@@ -130,7 +130,8 @@ public class Stanza {
     			risultato.append(" " + direzione);
     	risultato.append("\nAttrezzi nella stanza: ");
     	for (Attrezzo attrezzo : this.attrezzi) {
-    		risultato.append(attrezzo.toString()+" ");
+    		if (attrezzo!=null)
+    			risultato.append(" " + attrezzo);
     	}
     	return risultato.toString();
     }
@@ -143,10 +144,11 @@ public class Stanza {
 		boolean trovato;
 		trovato = false;
 		for (Attrezzo attrezzo : this.attrezzi) {
-			if (attrezzo.getNome().equals(nomeAttrezzo))
+			if (attrezzo.getNome().equals(nomeAttrezzo) && attrezzo != null)
 				trovato = true;
 		}
 		return trovato;
+		
 	}
 
 	/**
@@ -159,18 +161,20 @@ public class Stanza {
 		Attrezzo attrezzoCercato;
 		attrezzoCercato = null;
 		for (Attrezzo attrezzo : this.attrezzi) {
-			if (attrezzo.getNome().equals(nomeAttrezzo))
+			if (attrezzo.getNome().equals(nomeAttrezzo) && attrezzo != null)
 				attrezzoCercato = attrezzo;
 		}
 		return attrezzoCercato;	
 	}
+	
+
 
 	/**
 	 * Rimuove un attrezzo dalla stanza (ricerca in base al nome).
-	 * @param nomeAttrezzo
+	 * @param attrezzo
 	 * @return true se l'attrezzo e' stato rimosso, false altrimenti
 	 */
-	public boolean removeAttrezzo(Attrezzo attrezzo) {
+	public boolean removeAttrezzo(String attrezzo) {
 		// TODO da implementare
 		return false;
 	}
