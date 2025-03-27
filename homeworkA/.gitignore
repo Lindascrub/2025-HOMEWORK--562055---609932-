@@ -1,9 +1,0 @@
-
-
-.settings/
-bin/
-.classpath
-.project
-*.pdf
-
-git commit -m "Rimosso .settings, .classpath e .project dal tracking di git"
