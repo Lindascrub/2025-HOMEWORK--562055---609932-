@@ -117,10 +117,11 @@ public class DiaDia {
 		if( nomeAttrezzo == null) {
 			System.out.printf("Che attrezzo vuoi prendere?\nAttrezzo inesistente!\n");
 		}
-		//se {
-			Stanza stanzaCorrente = this.partita.getLabirinto().getStanzaCorrente();
+		else {
+			Stanza stanzaCorrente = this.partita.getStanzaCorrente();
+			System.out.println(stanzaCorrente.toString());
 		 if (!stanzaCorrente.hasAttrezzo(nomeAttrezzo)) {
-			System.out.printf("Che attrezzo vuoi prendere?\n");
+			System.out.printf("Che attrezzo vuoi prendere?\nAttrezzo non valido");
 		 }
 		 else {
 		 Attrezzo attrezzoPreso = stanzaCorrente.getAttrezzo(nomeAttrezzo);
@@ -132,9 +133,8 @@ public class DiaDia {
 			System.out.println("La borsa è piena!");
 				}
 		 	}
-		}
-
 		
+		}
 		System.out.println(partita.getStanzaCorrente().getDescrizione());
 		}
 	
@@ -143,7 +143,7 @@ public class DiaDia {
 			System.out.printf("Che attrezzo vuoi posare?\nAttrezzo inesistente!\n");
 		}
 		else {
-			Stanza stanzaCorrente = this.partita.getLabirinto().getStanzaCorrente();
+			Stanza stanzaCorrente = this.partita.getStanzaCorrente();
 		 if (!this.partita.getGiocatore().getBorsa().hasAttrezzo(nomeAttrezzo)) {
 			System.out.printf("Che attrezzo vuoi posare?\n");
 		 }
