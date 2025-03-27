@@ -29,6 +29,7 @@ public class Stanza {
     private int numeroStanzeAdiacenti;
     
 	private String[] direzioni;
+
     
     /**
      * Crea una stanza. Non ci sono stanze adiacenti, non ci sono attrezzi.
@@ -141,11 +142,14 @@ public class Stanza {
 	* @return true se l'attrezzo esiste nella stanza, false altrimenti.
 	*/
 	public boolean hasAttrezzo(String nomeAttrezzo) {
-		boolean trovato;
-		trovato = false;
+		
+		boolean trovato = false;
+		
 		for (Attrezzo attrezzo : this.attrezzi) {
-			if (attrezzo.getNome().equals(nomeAttrezzo) && attrezzo != null)
+			if(attrezzo != null) {
+				if(attrezzo.getNome().equals(nomeAttrezzo))
 				trovato = true;
+				}
 		}
 		return trovato;
 		
@@ -161,8 +165,10 @@ public class Stanza {
 		Attrezzo attrezzoCercato;
 		attrezzoCercato = null;
 		for (Attrezzo attrezzo : this.attrezzi) {
-			if (attrezzo.getNome().equals(nomeAttrezzo) && attrezzo != null)
+			if (attrezzo != null) {
+			if (attrezzo.getNome().equals(nomeAttrezzo))
 				attrezzoCercato = attrezzo;
+			}
 		}
 		return attrezzoCercato;	
 	}
@@ -171,12 +177,21 @@ public class Stanza {
 
 	/**
 	 * Rimuove un attrezzo dalla stanza (ricerca in base al nome).
-	 * @param attrezzo
+	 * @param attrezzoPreso
 	 * @return true se l'attrezzo e' stato rimosso, false altrimenti
 	 */
-	public boolean removeAttrezzo(String attrezzo) {
-		// TODO da implementare
-		return false;
+	public boolean removeAttrezzo(Attrezzo attrezzoPreso) {
+	boolean attrezzoRimosso= false;
+	for(int i = 0; i<NUMERO_MASSIMO_ATTREZZI; i++) {
+		if(this.attrezzi[i]!= null) {
+			if(this.attrezzi[i].equals(attrezzoPreso)) {
+				 this.attrezzi[i]= null ;
+				 attrezzoRimosso = true;
+			}
+		}
+		}
+	
+		return attrezzoRimosso;
 	}
 
 

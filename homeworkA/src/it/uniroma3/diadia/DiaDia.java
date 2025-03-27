@@ -65,6 +65,8 @@ public class DiaDia {
 			this.aiuto();
 		else if (comandoDaEseguire.getNome().equals("prendi"))
 			this.prendi(comandoDaEseguire.getParametro());
+		else if (comandoDaEseguire.getNome().equals("posa"))
+			this.posa(comandoDaEseguire.getParametro());
 		else
 			System.out.println("Comando sconosciuto");
 		if (this.partita.vinta()) {
@@ -115,23 +117,48 @@ public class DiaDia {
 		if( nomeAttrezzo == null) {
 			System.out.printf("Che attrezzo vuoi prendere?\nAttrezzo inesistente!\n");
 		}
-		else {
+		//se {
 			Stanza stanzaCorrente = this.partita.getLabirinto().getStanzaCorrente();
 		 if (!stanzaCorrente.hasAttrezzo(nomeAttrezzo)) {
-			System.out.printf("Che attrezzo vuoi prendere?\\nAttrezzo non presente\n");
+			System.out.printf("Che attrezzo vuoi prendere?\n");
 		 }
 		 else {
 		 Attrezzo attrezzoPreso = stanzaCorrente.getAttrezzo(nomeAttrezzo);
 		if(this.partita.getGiocatore().prendereAttrezzo(attrezzoPreso)) {
-			stanzaCorrente.removeAttrezzo(nomeAttrezzo);
+			stanzaCorrente.removeAttrezzo(attrezzoPreso);
+			
 		}
 		else {
 			System.out.println("La borsa è piena!");
-		}
-		 }
+				}
+		 	}
 		}
 
 		
+		System.out.println(partita.getStanzaCorrente().getDescrizione());
+		}
+	
+	private void posa(String nomeAttrezzo) {
+		if( nomeAttrezzo == null) {
+			System.out.printf("Che attrezzo vuoi posare?\nAttrezzo inesistente!\n");
+		}
+		else {
+			Stanza stanzaCorrente = this.partita.getLabirinto().getStanzaCorrente();
+		 if (!this.partita.getGiocatore().getBorsa().hasAttrezzo(nomeAttrezzo)) {
+			System.out.printf("Che attrezzo vuoi posare?\n");
+		 }
+		 else {
+		 Attrezzo attrezzoPosato = this.partita.getGiocatore().getBorsa().getAttrezzo(nomeAttrezzo);
+		if(attrezzoPosato != null) {
+			this.partita.getGiocatore().getBorsa().removeAttrezzoBorsa(nomeAttrezzo);
+			stanzaCorrente.addAttrezzo(attrezzoPosato);
+			
+		}
+		else {
+			System.out.println("La borsa è vuota!");
+				}
+		 	}
+		}
 		System.out.println(partita.getStanzaCorrente().getDescrizione());
 		}
 

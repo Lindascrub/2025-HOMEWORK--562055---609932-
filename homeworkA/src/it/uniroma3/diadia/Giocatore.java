@@ -29,8 +29,8 @@ public class Giocatore {
         return this.borsa.addAttrezzo(nomeAttrezzo);
     }
 
-    public Attrezzo posareAttrezzo(String nomeAttrezzo) {
-        return this.borsa.removeAttrezzo(nomeAttrezzo);
+    public Attrezzo[] posareAttrezzo(String nomeAttrezzo) {
+        return this.borsa.removeAttrezzoBorsa(nomeAttrezzo);
     }
 
 }
