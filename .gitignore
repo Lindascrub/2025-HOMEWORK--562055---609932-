@@ -26,9 +26,20 @@
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
 replay_pid*
+git rm --cached .classpath
+git rm --cached .project
+git rm --cached -r .settings/
+
 
 .settings/
 bin/
 .classpath
 .project
 *.pdf
+<<<<<<< HEAD
+
+git rm --cached .classpath
+git rm --cached .project
+git rm --cached -r .settings/
+=======
+>>>>>>> a20bea177dc6c2a4160c8b9b1742901a2f29e7e6
