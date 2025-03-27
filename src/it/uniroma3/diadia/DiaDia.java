@@ -16,6 +16,7 @@ import java.util.Scanner;
  * @version base
  */
 
+
 public class DiaDia {
 
 	static final private String MESSAGGIO_BENVENUTO = ""+
@@ -33,6 +34,7 @@ public class DiaDia {
 	private Partita partita;
 	private Scanner scannerDiLinee;
 
+	
 	public DiaDia() {
 		this.partita = new Partita();
 	}
@@ -119,9 +121,8 @@ public class DiaDia {
 		}
 		else {
 			Stanza stanzaCorrente = this.partita.getStanzaCorrente();
-			System.out.println(stanzaCorrente.toString());
 		 if (!stanzaCorrente.hasAttrezzo(nomeAttrezzo)) {
-			System.out.printf("Che attrezzo vuoi prendere?\nAttrezzo non valido");
+			System.out.printf("Che attrezzo vuoi prendere?\nAttrezzo non valido\n");
 		 }
 		 else {
 		 Attrezzo attrezzoPreso = stanzaCorrente.getAttrezzo(nomeAttrezzo);

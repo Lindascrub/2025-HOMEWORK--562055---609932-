@@ -34,7 +34,7 @@ public class Partita {
 
 	public void setStanzaCorrente(Stanza stanzaCorrente) {
 		this.stanzaCorrente = stanzaCorrente;
-		System.out.println(this.stanzaCorrente.toString());
+	
 	}
 
 	public Stanza getStanzaCorrente() {
