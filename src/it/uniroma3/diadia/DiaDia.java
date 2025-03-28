@@ -113,6 +113,7 @@ public class DiaDia {
 	/* 
 	 * Comando "Prendi".
 	 */
+	
 	private void prendi(String nomeAttrezzo) {
 		if( nomeAttrezzo == null) {
 			ioConsole.mostraMessaggio("Che attrezzo vuoi prendere? ");	//considerazione delle opzioni
@@ -131,6 +132,7 @@ public class DiaDia {
 		else {
 			ioConsole.mostraMessaggio("La borsa è piena!");
 				}
+		}
 		}
 		ioConsole.mostraMessaggio(partita.getStanzaCorrente().getDescrizione());	//descrizione
 		}
