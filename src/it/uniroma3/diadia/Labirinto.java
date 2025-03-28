@@ -1,5 +1,7 @@
 package it.uniroma3.diadia;
 
+
+
 public class Labirinto {
 	private Stanza stanzaIniziale;
 	private Stanza stanzaVincente;
