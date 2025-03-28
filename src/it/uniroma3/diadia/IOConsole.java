@@ -11,6 +11,7 @@ public class IOConsole {
 		@SuppressWarnings("resource")
 		Scanner scannerDiLinee = new Scanner(System.in);
 		String riga = scannerDiLinee.nextLine();
+		return riga;
 		
 	}
-	
+}

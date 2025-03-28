@@ -132,10 +132,6 @@ public class DiaDia {
 			ioConsole.mostraMessaggio("La borsa è piena!");
 				}
 		 	}
-
-=======
-
-		
 		}
 		ioConsole.mostraMessaggio(partita.getStanzaCorrente().getDescrizione());	//descrizione
 		}
@@ -174,7 +170,6 @@ public class DiaDia {
 
 			
 		
-	
 	
 	
 	public static void main(String[] argc) {
