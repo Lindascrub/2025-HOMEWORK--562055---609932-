@@ -1,6 +1,6 @@
 src/bin/
-src/.settings
-test/
+src/.settings/
+test/test/
 
 .classpath
 .classpath
