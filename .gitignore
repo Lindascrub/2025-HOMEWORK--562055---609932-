@@ -5,3 +5,6 @@
 .settings/org.eclipse.jdt.core.prefs
 bin/it/uniroma3/diadia/test.class
 bin/it/uniroma3/diadia/test.class
+.project
+bin/
+
