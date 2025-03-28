@@ -1,5 +1,7 @@
 package it.uniroma3.diadia;
 
+
+
 public class Borsa {
 	public final static int DEFAULT_PESO_MAX_BORSA = 10;
 	public final static int CFU_INIZIALI = 20;
