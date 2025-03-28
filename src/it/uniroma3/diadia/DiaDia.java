@@ -1,6 +1,4 @@
 package it.uniroma3.diadia;
-//ciao
-//ciao come stai
 
 import java.util.Scanner;
 
@@ -132,7 +130,6 @@ public class DiaDia {
 			System.out.println("La borsa è piena!");
 				}
 		 	}
-		}
 
 		
 		System.out.println(partita.getStanzaCorrente().getDescrizione());
