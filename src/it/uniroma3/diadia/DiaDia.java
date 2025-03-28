@@ -130,11 +130,7 @@ public class DiaDia {
 		else {
 			ioConsole.mostraMessaggio("La borsa è piena!");
 				}
-		 	}
-
-=======
-
-		
+		 	}	
 		}
 		ioConsole.mostraMessaggio(partita.getStanzaCorrente().getDescrizione());	//descrizione
 		}
