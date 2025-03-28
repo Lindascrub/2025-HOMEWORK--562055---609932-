@@ -1,3 +1,7 @@
+src/bin/
+src/.settings
+test/
+
 .classpath
 .classpath
 .classpath
@@ -6,5 +10,6 @@
 bin/it/uniroma3/diadia/test.class
 bin/it/uniroma3/diadia/test.class
 .project
+bin/
 bin/
 
