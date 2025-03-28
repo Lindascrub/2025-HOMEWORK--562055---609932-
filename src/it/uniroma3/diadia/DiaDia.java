@@ -1,5 +1,6 @@
 package it.uniroma3.diadia;
 
+
 /**
  * Classe principale di diadia, un semplice gioco di ruolo ambientato al dia.
  * Per giocare crea un'istanza di questa classe e invoca il letodo gioca
@@ -130,6 +131,9 @@ public class DiaDia {
 			ioConsole.mostraMessaggio("La borsa è piena!");
 				}
 		 	}
+
+=======
+
 		
 		}
 		ioConsole.mostraMessaggio(partita.getStanzaCorrente().getDescrizione());	//descrizione
