@@ -1,15 +1,11 @@
 src/bin/
 src/.settings/
-test/test/
+test/test/BorsaTest.java
+test/test/GiocatoreTest.java
+test/test/LabirintoTest.java
+test/test/PartitaTest.java
+test/test/StanzaaTest.java
+test/test
+test/
 
-.classpath
-.classpath
-.classpath
-.project
-.settings/org.eclipse.jdt.core.prefs
-bin/it/uniroma3/diadia/test.class
-bin/it/uniroma3/diadia/test.class
-.project
-bin/
-bin/
 
