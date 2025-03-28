@@ -8,9 +8,9 @@ public class IOConsole {
 		}
 	
 	public String leggiRiga() {
+		@SuppressWarnings("resource")
 		Scanner scannerDiLinee = new Scanner(System.in);
 		String riga = scannerDiLinee.nextLine();
-		scannerDiLinee.close();
 		return riga;
 }
 }
