@@ -1,4 +1,5 @@
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.Before;
@@ -6,6 +7,7 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import it.uniroma3.diadia.Attrezzo;
 import it.uniroma3.diadia.Labirinto;
 import it.uniroma3.diadia.Stanza;
 
@@ -15,7 +17,14 @@ class StanzaTest {
 		Stanza stanza1 = new Stanza("aula a nord");
 		String direzione = "nord";
 		Stanza stanzaNulla = null;
-	
+		Attrezzo[] attrezzi; //serve?
+		int numeroAttrezzi;
+		int NUMERO_MASSIMO_ATTREZZI=3;
+		Attrezzo sasso=new Attrezzo("sasso", 1);
+		Attrezzo forbici=new Attrezzo("forbici", 1);
+		Attrezzo carta=new Attrezzo("carta", 1);
+		Attrezzo lanterna=new Attrezzo("lanterna", 1);
+		Attrezzo osso=new Attrezzo("osso", 1);
 	
 	
 	@Test
@@ -38,6 +47,38 @@ class StanzaTest {
 
 	
 	
+	@Test
+	void addAttrezzoNumeroMassimoAttrezzi() {
+		stanza.addAttrezzo(carta);
+		stanza.addAttrezzo(forbici);
+		stanza.addAttrezzo(sasso);
+		stanza.addAttrezzo(lanterna);
+		stanza.addAttrezzo(carta);
+		stanza.addAttrezzo(forbici);
+		stanza.addAttrezzo(sasso);
+		stanza.addAttrezzo(lanterna);
+		stanza.addAttrezzo(carta);
+		stanza.addAttrezzo(forbici);
+		
+		assertFalse(stanza.addAttrezzo(osso));
+		
+	}
 	
+	@Test
+	void addAttrezzoTest() {
+		stanza.addAttrezzo(carta);
+		assertTrue(stanza.addAttrezzo(osso));
+	}
+	
+	@Test
+	void addAttrezzoArrayNullo() {
+		assertTrue(stanza.addAttrezzo(osso));
+	}
+	
+	
+	
+	//hasAttrezzo
+	//getAttrezzo
+	//removeAttrezzo
 	
 }
