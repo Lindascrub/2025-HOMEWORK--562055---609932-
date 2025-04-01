@@ -98,7 +98,28 @@ class StanzaTest {
 	}
 	
 	
-	//getAttrezzo
+	
+	@Test
+	void getAttrezzoNonEsistente() {
+		assertNull(stanza.getAttrezzo("lanterna"));
+	}
+	
+	@Test
+	void getAttrezzoUnicoNellArray() {
+		stanza.addAttrezzo(osso);
+		assertEquals(osso, stanza.getAttrezzo("osso"));
+	}
+	
+	@Test
+	void getAttrezzoGenerico() {
+		stanza.addAttrezzo(carta);
+		stanza.addAttrezzo(forbici);
+		stanza.addAttrezzo(sasso);
+		assertEquals(sasso,stanza.getAttrezzo("sasso"));
+	}
+	
+	
+	
 	//removeAttrezzo
 	
 }
