@@ -77,7 +77,27 @@ class StanzaTest {
 	
 	
 	
-	//hasAttrezzo
+	@Test
+	void hasAttrezzoNonPresente() {
+		assertFalse(stanza.hasAttrezzo("osso"));
+	}
+	
+	@Test
+	void hasAttrezzoUnicoPresente() {
+		stanza.addAttrezzo(osso);
+		assertTrue(stanza.hasAttrezzo("osso"));
+	}
+	
+	@Test
+	void hasAttrezzoGenerico() {
+		stanza.addAttrezzo(carta);
+		stanza.addAttrezzo(forbici);
+		stanza.addAttrezzo(sasso);
+		assertTrue(stanza.hasAttrezzo("carta"));
+		assertFalse(stanza.hasAttrezzo("osso"));
+	}
+	
+	
 	//getAttrezzo
 	//removeAttrezzo
 	
