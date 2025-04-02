@@ -1,6 +1,7 @@
 package it.uniroma3.diadia;
-
-
+import it.uniroma3.diadia.IOConsole.IOConsole;
+import it.uniroma3.diadia.ambienti.Stanza;
+import it.uniroma3.diadia.attrezzi.Attrezzo;
 /**
  * Classe principale di diadia, un semplice gioco di ruolo ambientato al dia.
  * Per giocare crea un'istanza di questa classe e invoca il letodo gioca
@@ -71,7 +72,8 @@ public class DiaDia {
 		if (this.partita.vinta()) {
 			ioConsole.mostraMessaggio("Hai vinto!");
 			return true;
-		} else
+		} else if (this.partita.isFinita())
+			ioConsole.mostraMessaggio("Hai perso!");
 			return false;
 	}   
 
@@ -82,7 +84,8 @@ public class DiaDia {
 	 */
 	private void aiuto() {
 		for(int i=0; i< elencoComandi.length; i++) 
-			ioConsole.mostraMessaggio(elencoComandi[i]);
+			ioConsole.mostraMessaggio(elencoComandi[i] + " ");
+		ioConsole.mostraMessaggio(" ");
 	}
 
 	/**
@@ -98,10 +101,10 @@ public class DiaDia {
 			ioConsole.mostraMessaggio("Direzione inesistente! ");		//se non esiste la direzione
 		else {
 			this.partita.setStanzaCorrente(prossimaStanza);				//esiste la direzione si muove
-			int cfu = this.partita.getCfu();
-			this.partita.setCfu(cfu--);
+			int cfu = this.partita.getGiocatore().getCfu();
+			this.partita.getGiocatore().setCfu(--cfu);
 		}
-		ioConsole.mostraMessaggio(partita.getStanzaCorrente().getDescrizione());		//descrizione
+		ioConsole.mostraMessaggio(this.partita.toString());		//descrizione
 	}
 
 	/**
@@ -150,8 +153,7 @@ public class DiaDia {
 		else {
 			Stanza stanzaCorrente = this.partita.getStanzaCorrente();
 		 if (!this.partita.getGiocatore().getBorsa().hasAttrezzo(nomeAttrezzo)) {
-			 ioConsole.mostraMessaggio("Che attrezzo vuoi posare?\n");				//scelta delle opzioni ++metti opzioni 
-			 
+			 ioConsole.mostraMessaggio("Attrezzo non presente nella borsa!");
 		 }
 		 else {
 		 Attrezzo attrezzoPosato = this.partita.getGiocatore().getBorsa().getAttrezzo(nomeAttrezzo);
@@ -159,7 +161,6 @@ public class DiaDia {
 			this.partita.getGiocatore().getBorsa().removeAttrezzoBorsa(nomeAttrezzo);
 			stanzaCorrente.addAttrezzo(attrezzoPosato);
 			ioConsole.mostraMessaggio("Hai posato " + nomeAttrezzo);
-			
 		}
 		else {
 			ioConsole.mostraMessaggio("La borsa è vuota!");							//priva di oggetti
