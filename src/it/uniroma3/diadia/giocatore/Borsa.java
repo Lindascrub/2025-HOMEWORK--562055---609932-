@@ -1,10 +1,9 @@
-package it.uniroma3.diadia;
+package it.uniroma3.diadia.giocatore;
 
-
+import it.uniroma3.diadia.attrezzi.Attrezzo;
 
 public class Borsa {
 	public final static int DEFAULT_PESO_MAX_BORSA = 10;
-	public final static int CFU_INIZIALI = 20;
 	private Attrezzo[] attrezzi;
 	private int numeroAttrezzi;
 	private int pesoMax;
@@ -28,6 +27,7 @@ public class Borsa {
 			return false;
 		this.attrezzi[this.numeroAttrezzi] = attrezzo;
 		this.numeroAttrezzi++;
+		return true;
 		}
 		return true;
 	

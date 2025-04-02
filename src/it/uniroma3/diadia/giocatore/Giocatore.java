@@ -1,14 +1,18 @@
-package it.uniroma3.diadia;
+package it.uniroma3.diadia.giocatore;
+
+import it.uniroma3.diadia.attrezzi.Attrezzo;
 
 
 
 public class Giocatore {
+	private final static int CFU_INIZIALI = 3;
 	private int cfu;
 	private Borsa borsa;
-	
+
 
 	public Giocatore() {
-		this.setBorsa(new Borsa());
+		this.borsa = new Borsa();
+		this.cfu=CFU_INIZIALI;
 	}
 
 	public int getCfu() {
@@ -27,12 +31,13 @@ public class Giocatore {
 		this.borsa = borsa;
 	}
 
-    public boolean prendereAttrezzo(Attrezzo nomeAttrezzo) {
-        return this.borsa.addAttrezzo(nomeAttrezzo);
+    public boolean prendereAttrezzo(Attrezzo Attrezzo) {
+        return this.borsa.addAttrezzo(Attrezzo);
     }
 
     public Attrezzo[] posareAttrezzo(String nomeAttrezzo) {
         return this.borsa.removeAttrezzoBorsa(nomeAttrezzo);
     }
+    
 
 }
