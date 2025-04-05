@@ -1,5 +1,6 @@
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.Before;
@@ -120,6 +121,26 @@ class StanzaTest {
 	
 	
 	
-	//removeAttrezzo
+	@Test
+	void removeAttrezzoNonEsistente() {
+		stanza.addAttrezzo(osso);
+		stanza.getAttrezzo("osso");
+		assertFalse(stanza.removeAttrezzo(carta));
+	}
+	
+	@Test
+	void removeAttrezzoUnSoloAttrezzo() {
+		stanza.addAttrezzo(osso);
+		stanza.getAttrezzo("osso");
+		assertTrue(stanza.removeAttrezzo(osso));
+	}
+	
+	@Test
+	void removeAttrezzoGenerico() {
+		stanza.addAttrezzo(osso);
+		stanza.addAttrezzo(carta);
+		stanza.getAttrezzo("osso");
+		assertTrue(stanza.removeAttrezzo(osso));
+	}
 	
 }
