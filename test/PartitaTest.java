@@ -3,10 +3,10 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import it.uniroma3.diadia.Giocatore;
-import it.uniroma3.diadia.Labirinto;
 import it.uniroma3.diadia.Partita;
-import it.uniroma3.diadia.Stanza;
+import it.uniroma3.diadia.ambienti.Labirinto;
+import it.uniroma3.diadia.ambienti.Stanza;
+import it.uniroma3.diadia.giocatore.Giocatore;
 
 class PartitaTest {
 

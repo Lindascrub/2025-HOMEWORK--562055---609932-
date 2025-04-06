@@ -1,7 +1,9 @@
-package it.uniroma3.diadia;
+package it.uniroma3.diadia.ambienti;
+
+import it.uniroma3.diadia.attrezzi.Attrezzo;
 
 public class Labirinto {
-	private Stanza stanzaCorrente;
+	private Stanza stanzaIniziale;
 	private Stanza stanzaVincente;
 	
 	
@@ -51,12 +53,12 @@ public class Labirinto {
 		this.setStanzaVincente(biblioteca);
     }
 
-	public Stanza getStanzaCorrente() {
-		return stanzaCorrente;
+	public Stanza getStanzaIniziale() {
+		return stanzaIniziale;
 	}
 
 	public void setStanzaCorrente(Stanza stanzaCorrente) {
-		this.stanzaCorrente = stanzaCorrente;
+		this.stanzaIniziale = stanzaCorrente;
 	}
 
 	public Stanza getStanzaVincente() {
