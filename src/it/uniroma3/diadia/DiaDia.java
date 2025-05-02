@@ -55,26 +55,19 @@ public class DiaDia {
 	 * @return true se l'istruzione e' eseguita e il gioco continua, false altrimenti
 	 */
 	private boolean processaIstruzione(String istruzione) {
-		Comando comandoDaEseguire = new Comando(istruzione);
+		Comando comandoDaEseguire;
 
-		if (comandoDaEseguire.getNome().equals("fine")) {
-			this.fine(); 
-			return true;
-		} else if (comandoDaEseguire.getNome().equals("vai"))
-			this.vai(comandoDaEseguire.getParametro());
-		else if (comandoDaEseguire.getNome().equals("aiuto"))
-			this.aiuto();
-		else if (comandoDaEseguire.getNome().equals("prendi"))
-			this.prendi(comandoDaEseguire.getParametro());
-		else if (comandoDaEseguire.getNome().equals("posa"))
-			this.posa(comandoDaEseguire.getParametro());
-		else
-			this.ioConsole.mostraMessaggio("Comando sconosciuto");
-		if (this.partita.vinta()) {
-			this.ioConsole.mostraMessaggio("Hai vinto!");
-			return true;
-		} else
-			return false;
+		FabbricaDiComandi factory= new FabbricaDiComandi();
+		
+		comandoDaEseguire=factory.costruisciComando(istruzione);
+		comandoDaEseguire.esegui(this.partita);
+		if(this.partita.vinta()) {
+			System.out.println("Hai vinto!");
+		}
+		if(!this.partita.giocatoreIsVivo()) {
+			System.out.println("Hai esaurito i CFU...");
+		}
+		return this.partita.isFinita();
 	}   
 
 	// implementazioni dei comandi dell'utente:
@@ -102,8 +95,8 @@ public class DiaDia {
 			this.ioConsole.mostraMessaggio("Direzione inesistente");
 		else {
 			this.partita.setStanzaCorrente(prossimaStanza);
-			int cfu = this.partita.getCfu();
-			this.partita.setCfu(cfu--);
+			int cfu = this.partita.getGiocatore().getCfu();
+			this.partita.getGiocatore().setCfu(cfu--);
 		}
 		this.ioConsole.mostraMessaggio(partita.getStanzaCorrente().getDescrizione());
 	}

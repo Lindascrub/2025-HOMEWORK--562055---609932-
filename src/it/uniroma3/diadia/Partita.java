@@ -72,24 +72,17 @@ public class Partita {
 	public void setFinita() {
 		this.finita = true;
 	}
-
-
-	public void setCfu(int i) {
-		// TODO Auto-generated method stub
-		
-	}
-
-
-	public int getCfu() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
 	
 	public Labirinto getLabirinto() {
 		return this.labirinto;
 	}
 	public Giocatore getGiocatore() {
 		return this.giocatore;
+	}
+
+	public boolean giocatoreIsVivo() {
+		// TODO Auto-generated method stub
+		return this.giocatore.getCfu()>0;
 	}
 
 }
