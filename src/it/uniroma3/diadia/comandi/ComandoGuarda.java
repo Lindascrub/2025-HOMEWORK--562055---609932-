@@ -1,6 +1,8 @@
-package it.uniroma3.diadia;
+package it.uniroma3.diadia.comandi;
 
-public class ComandoNonValido implements Comando {
+import it.uniroma3.diadia.Partita;
+
+public class ComandoGuarda implements Comando {
 
 	@Override
 	public void esegui(Partita partita) {

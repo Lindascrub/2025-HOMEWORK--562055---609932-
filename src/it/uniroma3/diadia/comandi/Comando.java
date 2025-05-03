@@ -1,9 +1,11 @@
-package it.uniroma3.diadia;
+package it.uniroma3.diadia.comandi;
 
 
 
 
 import java.util.Scanner;
+
+import it.uniroma3.diadia.Partita;
 
 /**
  * Questa classe modella un comando.

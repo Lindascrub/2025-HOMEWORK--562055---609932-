@@ -1,6 +1,8 @@
-package it.uniroma3.diadia;
+package it.uniroma3.diadia.comandi;
 
-public class ComandoPosa implements Comando {
+import it.uniroma3.diadia.Partita;
+
+public class ComandoPrendi implements Comando {
 
 	@Override
 	public void esegui(Partita partita) {
