@@ -34,7 +34,7 @@ public class ComandoVai implements Comando {
 	@Override
 	public void setParametro(String parametro) {
 		// TODO Auto-generated method stub
-		this.direzione=direzione;
+		this.direzione=parametro;
 	}
 
 }

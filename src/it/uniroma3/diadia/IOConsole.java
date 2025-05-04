@@ -4,6 +4,8 @@ import java.util.Scanner;
 
 public class IOConsole {
 	
+	private static IOConsole ioConsole;
+	
 	public void mostraMessaggio(String msg) {
 		System.out.println(msg);
 	}
@@ -13,6 +15,13 @@ public class IOConsole {
 		String riga = scannerDiLinee.nextLine();
 		//scannerDiLinee.close();
 		return riga;
+	}
+	
+	public static IOConsole getIOConsole() {
+		if (ioConsole == null) {
+			ioConsole = new IOConsole();
+		}
+		return ioConsole;
 	}
 	
 }
