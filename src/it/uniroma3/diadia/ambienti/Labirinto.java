@@ -6,9 +6,6 @@ public class Labirinto {
 	private Stanza stanzaIniziale;
 	private Stanza stanzaVincente;
 	
-	
-	
-	
 	public Labirinto(){
 		creaStanze();
 	
@@ -29,6 +26,7 @@ public class Labirinto {
 		Stanza aulaN10 = new Stanza("Aula N10");
 		Stanza laboratorio = new Stanza("Laboratorio Campus");
 		Stanza biblioteca = new Stanza("Biblioteca");
+		Stanza stanzaMagica=new StanzaMagica("Stanza magica");
 		
 		/* collega le stanze */
 		atrio.impostaStanzaAdiacente("nord", biblioteca);
@@ -37,6 +35,7 @@ public class Labirinto {
 		atrio.impostaStanzaAdiacente("ovest", laboratorio);
 		aulaN11.impostaStanzaAdiacente("est", laboratorio);
 		aulaN11.impostaStanzaAdiacente("ovest", atrio);
+		aulaN11.impostaStanzaAdiacente("nord", stanzaMagica);
 		aulaN10.impostaStanzaAdiacente("nord", atrio);
 		aulaN10.impostaStanzaAdiacente("est", aulaN11);
 		aulaN10.impostaStanzaAdiacente("ovest", laboratorio);

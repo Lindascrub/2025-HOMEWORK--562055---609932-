@@ -51,4 +51,21 @@ public class Attrezzo {
 		return this.getNome()+" ("+this.getPeso()+"kg)";
 	}
 
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((nome == null) ? 0 : nome.hashCode());
+		result = prime * result + peso;
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		Attrezzo that=(Attrezzo)obj;
+		return this.nome.equals(that.getNome()) && this.peso==that.getPeso();
+	}
+	
+	
+
 }
