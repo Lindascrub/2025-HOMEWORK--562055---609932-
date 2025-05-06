@@ -3,26 +3,26 @@ package it.uniroma3.diadia.ambienti;
 import it.uniroma3.diadia.attrezzi.Attrezzo;
 
 public class Labirinto {
-	private Stanza stanzaIniziale;
+	private Stanza stanzaCorrente;
 	private Stanza stanzaVincente;
-
-	
-	
-	
-	
-	public Labirinto(){
-		creaStanze();
-	
-	}
 
     /**
      * Crea tutte le stanze e le porte di collegamento
      */
-    private void creaStanze() {
+	
+	public void creaStanze() {
 
 		/* crea gli attrezzi */
     	Attrezzo lanterna = new Attrezzo("lanterna",3);
 		Attrezzo osso = new Attrezzo("osso",1);
+		Attrezzo mazza = new Attrezzo("mazza", 5);
+		
+		/* crea stanze del labirinto */
+		Stanza atrio = new Stanza("Atrio");
+		Stanza aulaN11 = new StanzaMagica("Aula N11");
+		Stanza aulaN10 = new StanzaBloccata("Aula N10", "est", "piedediporco");
+		Stanza laboratorio = new StanzaBuia("Laboratorio Campus", "lanterna");
+		Stanza biblioteca = new Stanza("Biblioteca");
     	
 		/* crea stanze del labirinto */
 		Stanza atrio = new Stanza("Atrio");
@@ -48,18 +48,23 @@ public class Labirinto {
         /* pone gli attrezzi nelle stanze */
 		aulaN10.addAttrezzo(lanterna);
 		atrio.addAttrezzo(osso);
+		aulaN11.addAttrezzo(mazza);
 
 		// il gioco comincia nell'atrio
-        this.stanzaIniziale = atrio;  
+        this.stanzaCorrente = atrio;  
 		this.stanzaVincente =biblioteca;
     }
 
-	public Stanza getStanzaIniziale() {
-		return this.stanzaIniziale;
+    public Stanza getStanzaVincente() {
+		return stanzaVincente;
 	}
 
-	public Stanza getStanzaVincente() {
-		return stanzaVincente;
+	public void setStanzaCorrente(Stanza stanzaCorrente) {
+		this.stanzaCorrente = stanzaCorrente;
+	}
+
+	public Stanza getStanzaCorrente() {
+		return this.stanzaCorrente;
 	}
 
 

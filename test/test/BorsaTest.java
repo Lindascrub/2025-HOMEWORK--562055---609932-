@@ -3,6 +3,8 @@ package test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.Iterator;
+
 import it.uniroma3.diadia.attrezzi.Attrezzo;
 import it.uniroma3.diadia.giocatore.Borsa;
 
@@ -14,6 +16,7 @@ class BorsaTest {
     private Borsa borsa;
     private Attrezzo attrezzoLeggero;
     private Attrezzo attrezzoPesante;
+	private Object singoletto;
     
     @BeforeEach
     void setUp() {
@@ -37,6 +40,16 @@ class BorsaTest {
     @Test
     void testNonAggiuntaAttrezzoTroppoPesante() {
         assertFalse(borsa.addAttrezzo(attrezzoPesante));
+    }
+    @Test
+    public void testRemove() {
+    Iterator<String> it =
+
+    this.singoletto.iterator();
+    String solitario = it.next();
+    assertFalse(this.singoletto.isEmpty());
+    it.remove();
+    assertTrue(this.singoletto.isEmpty());
     }
     
 }
