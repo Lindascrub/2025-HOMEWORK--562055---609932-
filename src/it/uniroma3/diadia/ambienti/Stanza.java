@@ -14,6 +14,27 @@ import it.uniroma3.diadia.attrezzi.Attrezzo;
 */
 
 public class Stanza {
+
+	public Stanza[] getStanzeAdiacenti() {
+		return stanzeAdiacenti;
+	}
+
+	public void setStanzeAdiacenti(Stanza[] stanzeAdiacenti) {
+		this.stanzeAdiacenti = stanzeAdiacenti;
+	}
+
+	public int getNumeroStanzeAdiacenti() {
+		return numeroStanzeAdiacenti;
+	}
+
+	public void setNumeroStanzeAdiacenti(int numeroStanzeAdiacenti) {
+		this.numeroStanzeAdiacenti = numeroStanzeAdiacenti;
+	}
+
+	public void setDirezioni(String[] direzioni) {
+		this.direzioni = direzioni;
+	}
+	
 	
 	static final private int NUMERO_MASSIMO_DIREZIONI = 4;
 	static final private int NUMERO_MASSIMO_ATTREZZI = 10;
@@ -23,9 +44,12 @@ public class Stanza {
     private Attrezzo[] attrezzi;
     private int numeroAttrezzi;
     
+    public int getNumeroAttrezziPossibili() {
+		return NUMERO_MASSIMO_ATTREZZI-this.numeroAttrezzi;
+	}
+
     private Stanza[] stanzeAdiacenti;
     private int numeroStanzeAdiacenti;
-    
 	private String[] direzioni;
 
     
