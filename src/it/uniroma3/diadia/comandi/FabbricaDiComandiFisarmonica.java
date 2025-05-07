@@ -2,7 +2,8 @@ package it.uniroma3.diadia.comandi;
 
 import java.util.Scanner;
 
-import it.uniroma3.diadia.IO.IO;
+import it.uniroma3.diadia.IO;
+
 import java.util.Scanner;
 
 

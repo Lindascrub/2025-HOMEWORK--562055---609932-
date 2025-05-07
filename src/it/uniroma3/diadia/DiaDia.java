@@ -1,6 +1,4 @@
 package it.uniroma3.diadia;
-import it.uniroma3.diadia.IO.IO;
-import it.uniroma3.diadia.IO.IOConsole;
 import it.uniroma3.diadia.comandi.Comando;
 import it.uniroma3.diadia.comandi.FabbricaDiComandiFisarmonica;
 
