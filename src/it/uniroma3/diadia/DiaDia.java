@@ -20,7 +20,7 @@ import it.uniroma3.diadia.comandi.FabbricaDiComandiFisarmonica;
 
 public class DiaDia {
 
-	static final private String MESSAGGIO_BENVENUTO = ""+
+	public static final String MESSAGGIO_BENVENUTO = ""+
 			"Ti trovi nell'Universita', ma oggi e' diversa dal solito...\n" +
 			"Meglio andare al piu' presto in biblioteca a studiare. Ma dov'e'?\n"+
 			"I locali sono popolati da strani personaggi, " +
@@ -30,14 +30,15 @@ public class DiaDia {
 			"o regalarli se pensi che possano ingraziarti qualcuno.\n\n"+
 			"Per conoscere le istruzioni usa il comando 'aiuto'.";
 
+
 	private Partita partita;
-	private IO io; 
-	
+	private IO io;
+
 	public DiaDia(IO console) {
-		this.partita = new Partita();
 		this.io = console;
+		this.partita = new Partita();
 	}
-	
+
 	public void gioca() {
 		String istruzione; 
 		io.mostraMessaggio(MESSAGGIO_BENVENUTO);
@@ -55,7 +56,7 @@ public class DiaDia {
 	 */
 	private boolean processaIstruzione(String istruzione) {
 		Comando comandoDaEseguire;
-		FabbricaDiComandiFisarmonica factory = new FabbricaDiComandiFisarmonica(io);
+		FabbricaDiComandiFisarmonica factory = new FabbricaDiComandiFisarmonica(this.io);
 		comandoDaEseguire = factory.costruisciComando(istruzione);
 		comandoDaEseguire.esegui(this.partita);
 		if (this.partita.vinta())
@@ -64,7 +65,6 @@ public class DiaDia {
 			io.mostraMessaggio("Hai esaurito i CFU...");
 		return this.partita.isFinita();
 		}
-
 	// implementazioni dei comandi dell'utente:
 	
 	/**

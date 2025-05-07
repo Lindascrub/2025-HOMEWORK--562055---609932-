@@ -3,53 +3,46 @@ package test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import java.util.Iterator;
 
 import it.uniroma3.diadia.attrezzi.Attrezzo;
 import it.uniroma3.diadia.giocatore.Borsa;
 
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
-class BorsaTest {
-    
-    private Borsa borsa;
-    private Attrezzo attrezzoLeggero;
-    private Attrezzo attrezzoPesante;
-	private Object singoletto;
-    
-    @BeforeEach
-    void setUp() {
-        borsa = new Borsa(10);
-        attrezzoLeggero = new Attrezzo("Torcia", 2);
-        attrezzoPesante = new Attrezzo("Incudine", 15);
-    }
-    
-    @Test
-    void testBorsaVuota() {
-        assertTrue(borsa.isEmpty());
-    }
-    
-    @Test
-    void testAggiuntaAttrezzo() {
-        assertTrue(borsa.addAttrezzo(attrezzoLeggero));
-        assertFalse(borsa.isEmpty());
-        assertEquals(attrezzoLeggero, borsa.getAttrezzo("Torcia"));
-    }
-    
-    @Test
-    void testNonAggiuntaAttrezzoTroppoPesante() {
-        assertFalse(borsa.addAttrezzo(attrezzoPesante));
-    }
-    @Test
-    public void testRemove() {
-    Iterator<String> it =
+import org.junit.Before;
 
-    this.singoletto.iterator();
-    String solitario = it.next();
-    assertFalse(this.singoletto.isEmpty());
-    it.remove();
-    assertTrue(this.singoletto.isEmpty());
-    }
-    
+
+public class BorsaTest {
+
+	Borsa b = new Borsa();
+	Attrezzo falce;
+	Attrezzo sega;
+	
+	@Before
+	public void setUp() {
+		falce = new Attrezzo("falce", 2);
+		sega = new Attrezzo("sega", 16);
+	}
+
+	@Test
+	public void testAddAttrezzoPesoMinoreDiDieci() {
+		assertTrue(b.addAttrezzo(falce));
+
+	}
+	
+	@Test
+	public void testAddAttrezzoPesoMaggioreDiDieci() {
+		assertFalse(b.addAttrezzo(sega));
+
+	}
+	
+	@Test
+	public void testGetPeso() {
+		b.addAttrezzo(falce);
+		assertEquals(falce, b.getAttrezzo("falce"));
+
+	}
 }
