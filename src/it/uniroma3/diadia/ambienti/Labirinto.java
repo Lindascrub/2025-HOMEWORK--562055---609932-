@@ -42,6 +42,7 @@ public class Labirinto {
 		laboratorio.impostaStanzaAdiacente("est", atrio);
 		laboratorio.impostaStanzaAdiacente("ovest", aulaN11);
 		biblioteca.impostaStanzaAdiacente("sud", atrio);
+		stanzaMagica.impostaStanzaAdiacente("sud", aulaN11);
 
         /* pone gli attrezzi nelle stanze */
 		aulaN10.addAttrezzo(lanterna);
