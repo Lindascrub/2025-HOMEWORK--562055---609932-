@@ -29,14 +29,19 @@ public class Partita {
 	
 	public Partita(int cfu) {
 		
-		this.labirinto = new Labirinto();
+		this(cfu,new Labirinto());
+	}
+	
+
+	public Partita(int cfu, Labirinto labirinto) {
+		
+		this.labirinto=labirinto;
 		this.stanzaCorrente = this.labirinto.getStanzaIniziale();
 		this.stanzaVincente = this.labirinto.getStanzaVincente();
 		this.giocatore = new Giocatore();
 		this.giocatore.setCfu(cfu);
 	}
 	
-
 	public Stanza getStanzaVincente() {
 		return stanzaVincente;
 	}

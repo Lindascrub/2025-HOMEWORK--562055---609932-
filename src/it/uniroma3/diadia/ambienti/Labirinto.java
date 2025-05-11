@@ -10,6 +10,12 @@ public class Labirinto {
 		creaStanze();
 	
 	}
+	
+	//costruttore per creare labirinti monostanza
+	public Labirinto(Stanza stanza) {
+		this.stanzaIniziale=stanza;
+		this.stanzaVincente=stanza;
+	}
 
     /**
      * Crea tutte le stanze e le porte di collegamento
