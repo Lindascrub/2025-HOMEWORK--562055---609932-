@@ -14,7 +14,7 @@ class PartitaTest {
 
 	@BeforeEach
 	void setUp() {
-		partita = new Partita();
+		partita = new Partita(new IOConsole());
 	}
 
 	@Test

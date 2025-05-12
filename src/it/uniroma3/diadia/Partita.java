@@ -16,30 +16,32 @@ public class Partita {
 	private Stanza stanzaCorrente;
 	private Stanza stanzaVincente;
 	private boolean finita;
-	Giocatore giocatore;
-	Labirinto labirinto;
-	
-	
+	private Giocatore giocatore;
+	private Labirinto labirinto;
+	private IO io;
 
 	static final private int CFU_INIZIALI = 20;
 	
-	public Partita() {
-		this(CFU_INIZIALI);
+	public Partita(IO io) {
+		this(io,CFU_INIZIALI);
 	}
 	
-	public Partita(int cfu) {
-		
-		this(cfu,new Labirinto());
+	public Partita(IO io, int cfu) {
+		this(io,cfu,new Labirinto());
 	}
-	
 
-	public Partita(int cfu, Labirinto labirinto) {
-		
+	public Partita(IO io, int cfu, Labirinto labirinto) {
 		this.labirinto=labirinto;
 		this.stanzaCorrente = this.labirinto.getStanzaIniziale();
 		this.stanzaVincente = this.labirinto.getStanzaVincente();
 		this.giocatore = new Giocatore();
 		this.giocatore.setCfu(cfu);
+		this.io=io;
+	}
+
+
+	public IO getIo() {
+		return this.io;
 	}
 	
 	public Stanza getStanzaVincente() {

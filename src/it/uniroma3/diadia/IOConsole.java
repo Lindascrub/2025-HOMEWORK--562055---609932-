@@ -2,7 +2,7 @@ package it.uniroma3.diadia;
 
 import java.util.Scanner;
 
-public class IOConsole {
+public class IOConsole implements IO {
 	
 	private static IOConsole ioConsole;
 	
@@ -17,11 +17,6 @@ public class IOConsole {
 		return riga;
 	}
 	
-	public static IOConsole getIOConsole() {
-		if (ioConsole == null) {
-			ioConsole = new IOConsole();
-		}
-		return ioConsole;
-	}
+
 	
 }

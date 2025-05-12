@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import it.uniroma3.diadia.IOConsole;
 import it.uniroma3.diadia.Partita;
 import it.uniroma3.diadia.ambienti.Labirinto;
 import it.uniroma3.diadia.ambienti.Stanza;
@@ -23,7 +24,7 @@ class ComandoPrendiTest {
 	public void setUp() {
 		this.stanza=new Stanza("stanza di test");
 		this.labirinto=new Labirinto(stanza);
-		this.partita=new Partita(0, labirinto);
+		this.partita=new Partita(new IOConsole(), 0, labirinto);
 		this.prendi=new ComandoPrendi();
 		
 		
