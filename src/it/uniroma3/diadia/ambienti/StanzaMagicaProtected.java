@@ -1,21 +1,21 @@
 package it.uniroma3.diadia.ambienti;
 
-
-
 import it.uniroma3.diadia.attrezzi.Attrezzo;
 
-public class StanzaMagica extends Stanza {
+public class StanzaMagicaProtected extends StanzaProtected {
 
+	
 	final static private int SOGLIA_MAGICA_DEFAULT=1;
 	
-	private int contatoreAttrezziPosati;
-	private int sogliaMagica;
+	protected int contatoreAttrezziPosati;
+	protected int sogliaMagica;
 	
-	public StanzaMagica(String nome) {
+	
+	public StanzaMagicaProtected(String nome) {
 		this(nome, SOGLIA_MAGICA_DEFAULT);
 	}
-
-	public StanzaMagica(String nome, int soglia) {
+	
+	public StanzaMagicaProtected(String nome, int soglia) {
 		super(nome);
 		this.contatoreAttrezziPosati=0;
 		this.sogliaMagica=soglia;
@@ -26,9 +26,9 @@ public class StanzaMagica extends Stanza {
 		this.contatoreAttrezziPosati++;
 		if(this.contatoreAttrezziPosati>this.sogliaMagica)
 			attrezzo=this.modificaAttrezzo(attrezzo);
-		if(this.getNumeroAttrezzi()<this.getAttrezzi().length) {
-			this.getAttrezzi()[this.getNumeroAttrezzi()]=attrezzo;
-			this.setNumeroAttrezzi(this.getNumeroAttrezzi()+1);
+		if(this.numeroAttrezzi<this.attrezzi.length) {
+			this.attrezzi[this.numeroAttrezzi]=attrezzo;
+			this.numeroAttrezzi++;
 			return true;
 		}
 		else return false;
@@ -42,5 +42,4 @@ public class StanzaMagica extends Stanza {
 		attrezzo=new Attrezzo(nomeInvertito.toString(), pesoX2);
 		return attrezzo;
 	}
-	
 }
