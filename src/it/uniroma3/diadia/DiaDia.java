@@ -63,10 +63,10 @@ public class DiaDia {
 		comandoDaEseguire=factory.costruisciComando(istruzione);
 		comandoDaEseguire.esegui(this.partita);
 		if(this.partita.vinta()) {
-			System.out.println("Hai vinto!");
+			partita.getIo().mostraMessaggio("Hai vinto!");
 		}
 		if(!this.partita.giocatoreIsVivo()) {
-			System.out.println("Hai esaurito i CFU...");
+			partita.getIo().mostraMessaggio("Hai esaurito i CFU...");
 		}
 		return this.partita.isFinita();
 	}   
