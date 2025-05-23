@@ -2,13 +2,14 @@ package it.uniroma3.diadia;
 
 public class IOSimulator implements IO {
 
-	private String[] inputDaLeggere;
-	private String[] messaggiStampati;
-	private int contatore;
+	private String[] comandi;
+	private String[] messaggi;
+	private int comandoCorrente;
+	private int messaggioCorrente;
 	
-	public IOSimulator(String[] input) {
-		this.inputDaLeggere=input;
-		this.messaggiStampati=new String[6];
+	public IOSimulator(String[] inputComandi) {
+		this.comandi=inputComandi;
+		this.comandoCorrente=0;
 	}
 	
 	@Override
@@ -20,7 +21,9 @@ public class IOSimulator implements IO {
 	@Override
 	public String leggiRiga() {
 		// TODO Auto-generated method stub
-		return null;
+		String riga=comandi[comandoCorrente];
+		comandoCorrente++;
+		return riga;
 	}
 
 }
