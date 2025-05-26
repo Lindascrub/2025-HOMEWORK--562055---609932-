@@ -24,11 +24,16 @@ public class StanzaBloccata extends Stanza {
 	@Override
 	 public String getDescrizione() {
 		
-		String bloccata="Stanza bloccata nella direzione: "+ direzioneBloccata+ "\nPrendi il "+nomeAttrezzoSbloccante+ " e posalo nella stanza";
+		String bloccata="Stanza bloccata nella direzione: "+ direzioneBloccata+ "\nPrendi l'attrezzo "+nomeAttrezzoSbloccante+ " e posalo nella stanza\n";
 		
-		if(this.hasAttrezzo(nomeAttrezzoSbloccante))
-			return super.getDescrizione();
-		else return bloccata;
+		String result = "";
+		
+		if(!this.hasAttrezzo(nomeAttrezzoSbloccante))
+			result=result+bloccata;
+		
+		result = result + super.getDescrizione();
+		
+		return result;
     }
 	
 	

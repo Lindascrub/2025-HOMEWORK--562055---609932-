@@ -25,6 +25,8 @@ public class Labirinto {
 		/* crea gli attrezzi */
     	Attrezzo lanterna = new Attrezzo("lanterna",3);
 		Attrezzo osso = new Attrezzo("osso",1);
+		Attrezzo torcia=new Attrezzo("torcia", 1);
+		Attrezzo chiave=new Attrezzo("evaihc", 2);
     	
 		/* crea stanze del labirinto */
 		Stanza atrio = new Stanza("Atrio");
@@ -34,10 +36,11 @@ public class Labirinto {
 		Stanza biblioteca = new Stanza("Biblioteca");
 		Stanza stanzaMagica=new StanzaMagica("Stanza magica");
 		Stanza stanzaBuia=new StanzaBuia("stanza buia", "torcia");
-		Stanza stanzaBloccata=new StanzaBloccata("stanza bloccata", "piedediporco", "sud");
+		Stanza stanzaBloccata=new StanzaBloccata("stanza bloccata", "chiave", "nord");
 		
 		/* collega le stanze */
-		atrio.impostaStanzaAdiacente("nord", biblioteca);
+		//atrio.impostaStanzaAdiacente("nord", biblioteca);
+		atrio.impostaStanzaAdiacente("nord", stanzaBloccata);
 		atrio.impostaStanzaAdiacente("est", aulaN11);
 		atrio.impostaStanzaAdiacente("sud", aulaN10);
 		atrio.impostaStanzaAdiacente("ovest", laboratorio);
@@ -50,16 +53,19 @@ public class Labirinto {
 		laboratorio.impostaStanzaAdiacente("est", atrio);
 		laboratorio.impostaStanzaAdiacente("ovest", aulaN11);
 		laboratorio.impostaStanzaAdiacente("nord", stanzaBuia);
-		biblioteca.impostaStanzaAdiacente("sud", atrio);
+		biblioteca.impostaStanzaAdiacente("sud", stanzaBloccata);
 		stanzaMagica.impostaStanzaAdiacente("sud", aulaN11);
 		stanzaBuia.impostaStanzaAdiacente("sud", laboratorio);
-		stanzaBuia.impostaStanzaAdiacente("nord", stanzaBloccata);
-		stanzaBloccata.impostaStanzaAdiacente("sud", stanzaBuia);
+		//stanzaBuia.impostaStanzaAdiacente("nord", stanzaBloccata);
+		stanzaBloccata.impostaStanzaAdiacente("nord", biblioteca);
+		stanzaBloccata.impostaStanzaAdiacente("sud", atrio);
 		
 		
         /* pone gli attrezzi nelle stanze */
 		aulaN10.addAttrezzo(lanterna);
 		atrio.addAttrezzo(osso);
+		aulaN11.addAttrezzo(torcia);
+		stanzaBuia.addAttrezzo(chiave);
 
 		// il gioco comincia nell'atrio
         this.setStanzaCorrente(atrio);  

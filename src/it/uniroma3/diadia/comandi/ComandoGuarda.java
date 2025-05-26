@@ -7,7 +7,7 @@ public class ComandoGuarda implements Comando {
 	@Override
 	public void esegui(Partita partita) {
 		// TODO Auto-generated method stub
-		partita.getIo().mostraMessaggio(partita.getStanzaCorrente().toString());
+		partita.getIo().mostraMessaggio(partita.getStanzaCorrente().getDescrizione());
 	}
 
 	@Override
