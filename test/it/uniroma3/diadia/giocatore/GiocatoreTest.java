@@ -27,19 +27,6 @@ class GiocatoreTest {
 	    void testCfuIniziali() {
 	        assertEquals(CFU_INIZIALI, giocatore.getCfu());
 	    }
-	 
-	    
-	    @Test
-	    void testPrendereAttrezzo() {
-	        assertTrue(giocatore.prendereAttrezzo(attrezzo));
-	        assertNotNull(giocatore.getBorsa().getAttrezzo("Spada"));
-	    }
-	    
-	    @Test
-	    void testPosareAttrezzo() {
-	        giocatore.prendereAttrezzo(attrezzo);
-	        giocatore.posareAttrezzo("Spada");
-	        assertNull(giocatore.getBorsa().getAttrezzo("Spada"));
-	    }
+	
 
 }

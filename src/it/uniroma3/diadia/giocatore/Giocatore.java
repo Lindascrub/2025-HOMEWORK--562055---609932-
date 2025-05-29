@@ -1,5 +1,7 @@
 package it.uniroma3.diadia.giocatore;
 
+import java.util.ArrayList;
+
 import it.uniroma3.diadia.attrezzi.Attrezzo;
 
 public class Giocatore {
@@ -26,13 +28,5 @@ public class Giocatore {
 	public void setBorsa(Borsa borsa) {
 		this.borsa = borsa;
 	}
-
-    public boolean prendereAttrezzo(Attrezzo nomeAttrezzo) {
-        return this.borsa.addAttrezzo(nomeAttrezzo);
-    }
-
-    public Attrezzo[] posareAttrezzo(String nomeAttrezzo) {
-        return this.borsa.removeAttrezzoBorsa(nomeAttrezzo);
-    }
 
 }

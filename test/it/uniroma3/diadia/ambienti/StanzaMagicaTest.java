@@ -27,7 +27,7 @@ class StanzaMagicaTest {
 	@Test
 	void modificaAttrezzoTestConUnsoloAttrezzoAggiunto() {
 		this.stanzaMagica.addAttrezzo(this.lanterna);
-		assertEquals(this.lanterna,this.stanzaMagica.getAttrezzi()[0]);
+		assertEquals(this.lanterna,this.stanzaMagica.getAttrezzi().get(0));
 	}
 
 	
@@ -35,7 +35,7 @@ class StanzaMagicaTest {
 	void modificaAttrezzoTestConDueAttrezziAggiunti() {
 		this.stanzaMagica.addAttrezzo(pala);
 		this.stanzaMagica.addAttrezzo(lanterna);
-		assertEquals(this.pala,this.stanzaMagica.getAttrezzi()[0]);
-		assertEquals(this.lanternaInvertita,this.stanzaMagica.getAttrezzi()[1]);
+		assertEquals(this.pala,this.stanzaMagica.getAttrezzi().get(0));
+		assertEquals(this.lanternaInvertita,this.stanzaMagica.getAttrezzi().get(1));
 	}
 }

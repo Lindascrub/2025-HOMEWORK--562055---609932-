@@ -20,7 +20,7 @@ public class ComandoPrendi implements Comando {
 			}
 			else {
 				Attrezzo attrezzoPreso = stanzaCorrente.getAttrezzo(nomeAttrezzo);
-				if(partita.getGiocatore().prendereAttrezzo(attrezzoPreso)) {
+				if(partita.getGiocatore().getBorsa().addAttrezzo(attrezzoPreso)) {
 					stanzaCorrente.removeAttrezzo(attrezzoPreso);
 
 				}
