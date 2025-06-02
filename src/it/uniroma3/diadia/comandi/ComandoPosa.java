@@ -1,7 +1,7 @@
 package it.uniroma3.diadia.comandi;
 
+import it.uniroma3.diadia.IO;
 import it.uniroma3.diadia.Partita;
-import it.uniroma3.diadia.IO.IO;
 import it.uniroma3.diadia.attrezzi.Attrezzo;
 
 public class ComandoPosa implements Comando{
@@ -14,7 +14,7 @@ public class ComandoPosa implements Comando{
 	public void esegui(Partita partita) {
 		Attrezzo a = partita.getGiocatore().getBorsa().getAttrezzo(nomeAttrezzo);
 
-		if(partita.getStanzaCorrente().getNumeroAttrezziPossibili()>0) {
+		if(partita.getStanzaCorrente().getNumeroAttrezziPossibili()>0){
 			partita.getLabirinto().getStanzaCorrente().addAttrezzo(a);
 			partita.getGiocatore().getBorsa().removeAttrezzo(nomeAttrezzo);
 		}

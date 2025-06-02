@@ -1,44 +1,36 @@
 package test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 
 import it.uniroma3.diadia.ambienti.Stanza;
 import it.uniroma3.diadia.attrezzi.Attrezzo;
 
+public class StanzaTest {	
 
-class StanzaTest {
-    
-    private Stanza stanza;
-    private Attrezzo attrezzo;
-    
-    
-    @BeforeEach
-    void setUp() {
-        stanza = new Stanza("Aula");
-        attrezzo = new Attrezzo("Chiave", 1);
-      
-    }
- 
-    
-    @Test
-    void testAddAttrezzo() {
-        assertTrue(stanza.addAttrezzo(attrezzo));
-        assertEquals(attrezzo, stanza.getAttrezzo("Chiave"));
-    }
-    
-    @Test
-    void testHasAttrezzo() {
-        stanza.addAttrezzo(attrezzo);
-        assertTrue(stanza.hasAttrezzo("Chiave"));
-    }
-    
-    @Test
-    void testRemoveAttrezzo() {
-        stanza.addAttrezzo(attrezzo);
-        assertTrue(stanza.removeAttrezzo(attrezzo));
-        assertFalse(stanza.hasAttrezzo("Chiave"));
-    }
+	Stanza s1 = new Stanza("s1");
+	Stanza s2= new Stanza("s2");
+	Attrezzo m = new Attrezzo("martello", 42);
+	@Test
+	public void testGetStanzaAdiacente() {
+		assertNull(s1.getStanzaAdiacente("sud"));
+	}
+	
+
+	@Test
+	public void testImpostaStanzaAdiacente() {
+		s1.impostaStanzaAdiacente("sud", s2);
+		assertEquals(s2, s1.getStanzaAdiacente("sud"));
+	}
+	
+	@Test
+	public void testAddAttrezzo() {
+		
+		assertTrue(s1.addAttrezzo(m));
+	}
+	
+
 }

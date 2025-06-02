@@ -1,7 +1,7 @@
 package it.uniroma3.diadia.comandi;
 
+import it.uniroma3.diadia.IO;
 import it.uniroma3.diadia.Partita;
-import it.uniroma3.diadia.IO.IO;
 import it.uniroma3.diadia.ambienti.Stanza;
 
 
@@ -22,7 +22,7 @@ public class ComandoVai implements Comando {
 		}
 		partita.setStanzaCorrente(prossimaStanza);
 		System.out.println(partita.getStanzaCorrente().getNome());
-		partita.getGiocatore.setCfu(partita.getGiocatore().getCfu()-1);
+		partita.getGiocatore().setCfu(partita.getGiocatore().getCfu()-1);
 	}
 	@Override
 	public void setParametro(String parametro) {

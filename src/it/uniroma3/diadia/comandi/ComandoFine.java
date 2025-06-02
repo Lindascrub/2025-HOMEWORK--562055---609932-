@@ -1,19 +1,19 @@
 package it.uniroma3.diadia.comandi;
 
+import it.uniroma3.diadia.IO;
 import it.uniroma3.diadia.Partita;
-import it.uniroma3.diadia.IO.IO;
 
 public class ComandoFine implements Comando {
 
 	private IO io;
 	private final static String MSG = "fine";
-	public final static String MSG_FINE = "Grazie di aver giocato!";
+	public final static String MESSAGGIO_FINE = "Grazie di aver giocato!";
 
 
 	@Override
 	public void esegui(Partita partita) {
 		partita.setFinita();
-		io.mostraMessaggio(MSG_FINE);  // si desidera smettere
+		io.mostraMessaggio(MESSAGGIO_FINE);  // si desidera smettere
 
 	}
 	@Override

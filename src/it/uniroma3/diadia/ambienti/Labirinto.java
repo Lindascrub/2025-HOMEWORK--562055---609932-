@@ -13,9 +13,9 @@ public class Labirinto {
 	public void creaStanze() {
 
 		/* crea gli attrezzi */
-    	Attrezzo lanterna = new Attrezzo("lanterna",3);
+    	Attrezzo lanterna = new Attrezzo("lanterna",1);
 		Attrezzo osso = new Attrezzo("osso",1);
-		Attrezzo mazza = new Attrezzo("mazza", 5);
+		Attrezzo mazza = new Attrezzo("mazza", 1);
 		
 		/* crea stanze del labirinto */
 		Stanza atrio = new Stanza("Atrio");
@@ -24,12 +24,6 @@ public class Labirinto {
 		Stanza laboratorio = new StanzaBuia("Laboratorio Campus", "lanterna");
 		Stanza biblioteca = new Stanza("Biblioteca");
     	
-		/* crea stanze del labirinto */
-		Stanza atrio = new Stanza("Atrio");
-		Stanza aulaN11 = new Stanza("Aula N11");
-		Stanza aulaN10 = new Stanza("Aula N10");
-		Stanza laboratorio = new Stanza("Laboratorio Campus");
-		Stanza biblioteca = new Stanza("Biblioteca");
 		
 		/* collega le stanze */
 		atrio.impostaStanzaAdiacente("nord", biblioteca);
