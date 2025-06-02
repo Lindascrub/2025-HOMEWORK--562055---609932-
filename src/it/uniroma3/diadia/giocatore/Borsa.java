@@ -69,6 +69,7 @@ public class Borsa {
 		}
 		return attrezzoDaRimuovere;
 	}
+	
 	@Override
 	public String toString() {
 		StringBuilder s = new StringBuilder();
