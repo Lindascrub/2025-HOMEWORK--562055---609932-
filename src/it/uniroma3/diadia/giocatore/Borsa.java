@@ -2,9 +2,17 @@ package it.uniroma3.diadia.giocatore;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.SortedSet;
+import java.util.TreeSet;
 
 import it.uniroma3.diadia.attrezzi.Attrezzo;
+import it.uniroma3.diadia.attrezzi.ComparatoreNomeAttrezzi;
 
 public class Borsa {
 	public final static int DEFAULT_PESO_MAX_BORSA = 10;
@@ -23,6 +31,9 @@ public class Borsa {
 	}
 	
 	public boolean addAttrezzo(Attrezzo attrezzo) {
+		if(attrezzo.getPeso()+this.getPeso()>this.getPesoMax()) {
+			return false;
+		}
 		return this.attrezzi.add(attrezzo);
 	}
 	
@@ -76,6 +87,29 @@ public class Borsa {
 		attrezziOrdinati.addAll(this.attrezzi);
 		Collections.sort(attrezziOrdinati);
 		return attrezziOrdinati;
+	}
+	
+	public SortedSet<Attrezzo> getContenutoOrdinatoPerNome(){
+		Comparator<Attrezzo> cmp=new ComparatoreNomeAttrezzi();
+		SortedSet<Attrezzo> attrezziOrdinati=new TreeSet<Attrezzo>(cmp);
+		attrezziOrdinati.addAll(this.attrezzi);
+		return attrezziOrdinati;
+		
+	}
+	
+	public Map<Integer,Set<Attrezzo>> getContenutoRaggruppatoPerPeso(){
+		Map<Integer,Set<Attrezzo>> peso2attrezzi=new HashMap<Integer, Set<Attrezzo>>();
+		for(Attrezzo a : this.attrezzi) {
+			if(peso2attrezzi.containsKey(a.getPeso())) {
+				peso2attrezzi.get(a.getPeso()).add(a);
+			}
+			else {
+				Set<Attrezzo> set=new HashSet<Attrezzo>();
+				set.add(a);
+				peso2attrezzi.put(a.getPeso(),set);
+			}
+		}
+		return peso2attrezzi;
 	}
 	
 	@Override
