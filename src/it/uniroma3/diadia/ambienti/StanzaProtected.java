@@ -2,45 +2,8 @@ package it.uniroma3.diadia.ambienti;
 
 import it.uniroma3.diadia.attrezzi.Attrezzo;
 
-<<<<<<<< HEAD:src/it/uniroma3/diadia/ambienti/Stanza.java
-/**
- * Classe Stanza - una stanza in un gioco di ruolo.
- * Una stanza e' un luogo fisico nel gioco.
- * E' collegata ad altre stanze attraverso delle uscite.
- * Ogni uscita e' associata ad una direzione.
- * 
- * @author docente di POO 
- * @see Attrezzo
- * @version base
-*/
-
-public class Stanza {
-
-	public Stanza[] getStanzeAdiacenti() {
-		return stanzeAdiacenti;
-	}
-
-	public void setStanzeAdiacenti(Stanza[] stanzeAdiacenti) {
-		this.stanzeAdiacenti = stanzeAdiacenti;
-	}
-
-	public int getNumeroStanzeAdiacenti() {
-		return numeroStanzeAdiacenti;
-	}
-
-	public void setNumeroStanzeAdiacenti(int numeroStanzeAdiacenti) {
-		this.numeroStanzeAdiacenti = numeroStanzeAdiacenti;
-	}
-
-	public void setDirezioni(String[] direzioni) {
-		this.direzioni = direzioni;
-	}
-	
-	
-========
 public class StanzaProtected {
 
->>>>>>>> margherita:src/it/uniroma3/diadia/ambienti/StanzaProtected.java
 	static final private int NUMERO_MASSIMO_DIREZIONI = 4;
 	static final private int NUMERO_MASSIMO_ATTREZZI = 10;
 	
@@ -49,21 +12,10 @@ public class StanzaProtected {
 	protected Attrezzo[] attrezzi;
     protected int numeroAttrezzi;
     
-<<<<<<<< HEAD:src/it/uniroma3/diadia/ambienti/Stanza.java
-    public int getNumeroAttrezziPossibili() {
-		return NUMERO_MASSIMO_ATTREZZI-this.numeroAttrezzi;
-	}
-
-    private Stanza[] stanzeAdiacenti;
-    private int numeroStanzeAdiacenti;
-	private String[] direzioni;
-
-========
     protected Stanza[] stanzeAdiacenti;
     protected int numeroStanzeAdiacenti;
     
     protected String[] direzioni;
->>>>>>>> margherita:src/it/uniroma3/diadia/ambienti/StanzaProtected.java
     
     public StanzaProtected(String nome) {
     	this.nome = nome;

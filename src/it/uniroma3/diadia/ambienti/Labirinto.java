@@ -1,10 +1,21 @@
 package it.uniroma3.diadia.ambienti;
 
 import it.uniroma3.diadia.attrezzi.Attrezzo;
-
+// 23-20
 public class Labirinto {
 	private Stanza stanzaIniziale;
 	private Stanza stanzaVincente;
+	
+	public Labirinto(String nomeFile) {
+		CaricatoreLabirinto c =
+		new CaricatoreLabirinto(nomeFile);
+		c.carica();
+		this.stanzaIniziale = c.getStanzaIniziale();
+		this.stanzaVincente = c.getStanzaVincente();
+		
+	}
+		
+/*
 	
 	public Labirinto(){
 		creaStanze();
@@ -19,16 +30,16 @@ public class Labirinto {
 
     /**
      * Crea tutte le stanze e le porte di collegamento
-     */
+  
     private void creaStanze() {
 
-		/* crea gli attrezzi */
+		/* crea gli attrezzi 
     	Attrezzo lanterna = new Attrezzo("lanterna",3);
 		Attrezzo osso = new Attrezzo("osso",1);
 		Attrezzo torcia=new Attrezzo("torcia", 1);
 		Attrezzo chiave=new Attrezzo("evaihc", 2);
     	
-		/* crea stanze del labirinto */
+		/* crea stanze del labirinto 
 		Stanza atrio = new Stanza("Atrio");
 		Stanza aulaN11 = new Stanza("Aula N11");
 		Stanza aulaN10 = new Stanza("Aula N10");
@@ -38,7 +49,7 @@ public class Labirinto {
 		Stanza stanzaBuia=new StanzaBuia("stanza buia", "torcia");
 		Stanza stanzaBloccata=new StanzaBloccata("stanza bloccata", "chiave", "nord");
 		
-		/* collega le stanze */
+		/* collega le stanze 
 		//atrio.impostaStanzaAdiacente("nord", biblioteca);
 		atrio.impostaStanzaAdiacente("nord", stanzaBloccata);
 		atrio.impostaStanzaAdiacente("est", aulaN11);
@@ -61,7 +72,7 @@ public class Labirinto {
 		stanzaBloccata.impostaStanzaAdiacente("sud", atrio);
 		
 		
-        /* pone gli attrezzi nelle stanze */
+        /* pone gli attrezzi nelle stanze 
 		aulaN10.addAttrezzo(lanterna);
 		atrio.addAttrezzo(osso);
 		aulaN11.addAttrezzo(torcia);
@@ -71,7 +82,7 @@ public class Labirinto {
         this.setStanzaCorrente(atrio);  
 		this.setStanzaVincente(biblioteca);
     }
-
+*/
 	public Stanza getStanzaIniziale() {
 		return stanzaIniziale;
 	}
