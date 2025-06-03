@@ -1,22 +1,24 @@
 package it.uniroma3.diadia.giocatore;
 
-public class Giocatore {
-	static final private int CFU_INIZIALI = 20;
+import java.util.ArrayList;
 
+import it.uniroma3.diadia.attrezzi.Attrezzo;
+
+public class Giocatore {
 	private int cfu;
 	private Borsa borsa;
+	
 
 	public Giocatore() {
-		this.cfu = CFU_INIZIALI;
-		this.borsa = new Borsa();
+		this.setBorsa(new Borsa());
 	}
 
 	public int getCfu() {
-		return this.cfu;
+		return cfu;
 	}
 
 	public void setCfu(int cfu) {
-		this.cfu = cfu;		
+		this.cfu = cfu;
 	}
 
 	public Borsa getBorsa() {
@@ -25,7 +27,6 @@ public class Giocatore {
 
 	public void setBorsa(Borsa borsa) {
 		this.borsa = borsa;
-	}	
-	
-	
+	}
+
 }

@@ -2,44 +2,80 @@ package it.uniroma3.diadia.ambienti;
 
 import it.uniroma3.diadia.attrezzi.Attrezzo;
 
+<<<<<<<< HEAD:src/it/uniroma3/diadia/ambienti/Stanza.java
+/**
+ * Classe Stanza - una stanza in un gioco di ruolo.
+ * Una stanza e' un luogo fisico nel gioco.
+ * E' collegata ad altre stanze attraverso delle uscite.
+ * Ogni uscita e' associata ad una direzione.
+ * 
+ * @author docente di POO 
+ * @see Attrezzo
+ * @version base
+*/
+
+public class Stanza {
+
+	public Stanza[] getStanzeAdiacenti() {
+		return stanzeAdiacenti;
+	}
+
+	public void setStanzeAdiacenti(Stanza[] stanzeAdiacenti) {
+		this.stanzeAdiacenti = stanzeAdiacenti;
+	}
+
+	public int getNumeroStanzeAdiacenti() {
+		return numeroStanzeAdiacenti;
+	}
+
+	public void setNumeroStanzeAdiacenti(int numeroStanzeAdiacenti) {
+		this.numeroStanzeAdiacenti = numeroStanzeAdiacenti;
+	}
+
+	public void setDirezioni(String[] direzioni) {
+		this.direzioni = direzioni;
+	}
+	
+	
+========
 public class StanzaProtected {
+
+>>>>>>>> margherita:src/it/uniroma3/diadia/ambienti/StanzaProtected.java
 	static final private int NUMERO_MASSIMO_DIREZIONI = 4;
-	protected static final int NUMERO_MASSIMO_ATTREZZI = 10;
+	static final private int NUMERO_MASSIMO_ATTREZZI = 10;
 	
-	private String nome;
+	protected String nome;
 	
-    protected Attrezzo[] attrezzi;
+	protected Attrezzo[] attrezzi;
     protected int numeroAttrezzi;
     
+<<<<<<<< HEAD:src/it/uniroma3/diadia/ambienti/Stanza.java
     public int getNumeroAttrezziPossibili() {
 		return NUMERO_MASSIMO_ATTREZZI-this.numeroAttrezzi;
 	}
 
-    protected StanzaProtected[] stanzeAdiacenti;
+    private Stanza[] stanzeAdiacenti;
+    private int numeroStanzeAdiacenti;
+	private String[] direzioni;
+
+========
+    protected Stanza[] stanzeAdiacenti;
     protected int numeroStanzeAdiacenti;
-    protected String[] direzioni;
-
     
-    /**
-     * Crea una stanza. Non ci sono stanze adiacenti, non ci sono attrezzi.
-     * @param nome il nome della stanza
-     */
+    protected String[] direzioni;
+>>>>>>>> margherita:src/it/uniroma3/diadia/ambienti/StanzaProtected.java
+    
     public StanzaProtected(String nome) {
-        this.nome = nome;
-        this.numeroStanzeAdiacenti = 0;
-        this.numeroAttrezzi = 0;
-        this.direzioni = new String[NUMERO_MASSIMO_DIREZIONI];
-        this.stanzeAdiacenti = new StanzaProtected[NUMERO_MASSIMO_DIREZIONI];
-        this.attrezzi = new Attrezzo[NUMERO_MASSIMO_ATTREZZI];
+    	this.nome = nome;
+	    this.numeroStanzeAdiacenti = 0;
+	    this.numeroAttrezzi = 0;
+	    this.direzioni = new String[NUMERO_MASSIMO_DIREZIONI];
+	    this.stanzeAdiacenti = new Stanza[NUMERO_MASSIMO_DIREZIONI];
+	    this.attrezzi = new Attrezzo[NUMERO_MASSIMO_ATTREZZI];
+        
     }
-
-    /**
-     * Imposta una stanza adiacente.
-     *
-     * @param direzione direzione in cui sara' posta la stanza adiacente.
-     * @param stanza stanza adiacente nella direzione indicata dal primo parametro.
-     */
-    public void impostaStanzaAdiacente(String direzione, StanzaProtected stanza) {
+	
+    public void impostaStanzaAdiacente(String direzione, Stanza stanza) {
         boolean aggiornato = false;
     	for(int i=0; i<this.direzioni.length; i++)
         	if (direzione.equals(this.direzioni[i])) {
@@ -53,19 +89,24 @@ public class StanzaProtected {
     		    this.numeroStanzeAdiacenti++;
     		}
     }
-
-    /**
-     * Restituisce la stanza adiacente nella direzione specificata
-     * @param direzione
-     */
-	public StanzaProtected getStanzaAdiacente(String direzione) {
-        StanzaProtected stanza = null;
+    
+    public Stanza getStanzaAdiacente(String direzione) {
+        Stanza stanza = null;
 		for(int i=0; i<this.numeroStanzeAdiacenti; i++)
         	if (this.direzioni[i].equals(direzione))
         		stanza = this.stanzeAdiacenti[i];
         return stanza;
 	}
+	
+	
+	public int getNumeroAttrezzi() {
+		return this.numeroAttrezzi;
+	}
 
+	public void setNumeroAttrezzi(int numero) {
+		this.numeroAttrezzi=numero;
+	}
+	
     /**
      * Restituisce la nome della stanza.
      * @return il nome della stanza
@@ -73,11 +114,7 @@ public class StanzaProtected {
     public String getNome() {
         return this.nome;
     }
-
-    /**
-     * Restituisce la descrizione della stanza.
-     * @return la descrizione della stanza
-     */
+    
     public String getDescrizione() {
         return this.toString();
     }
@@ -190,6 +227,5 @@ public class StanzaProtected {
 	    	direzioni[i] = this.direzioni[i];
 	    return direzioni;
     }
-
 
 }

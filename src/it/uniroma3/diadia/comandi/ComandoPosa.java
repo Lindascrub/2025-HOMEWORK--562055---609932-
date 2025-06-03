@@ -1,50 +1,56 @@
 package it.uniroma3.diadia.comandi;
 
-import it.uniroma3.diadia.IO;
 import it.uniroma3.diadia.Partita;
+import it.uniroma3.diadia.ambienti.Stanza;
 import it.uniroma3.diadia.attrezzi.Attrezzo;
 
-public class ComandoPosa implements Comando{
-	
-	private IO io;
+public class ComandoPosa implements Comando {
+
 	private String nomeAttrezzo;
-	private final static String MSG = "posa";
 	
 	@Override
 	public void esegui(Partita partita) {
-		Attrezzo a = partita.getGiocatore().getBorsa().getAttrezzo(nomeAttrezzo);
-
-		if(partita.getStanzaCorrente().getNumeroAttrezziPossibili()>0){
-			partita.getLabirinto().getStanzaCorrente().addAttrezzo(a);
-			partita.getGiocatore().getBorsa().removeAttrezzo(nomeAttrezzo);
+		// TODO Auto-generated method stub
+		if( nomeAttrezzo == null) {
+			partita.getIo().mostraMessaggio("Che attrezzo vuoi posare?\nAttrezzo inesistente!\n");
 		}
 		else {
-			io.mostraMessaggio("Non c'è spazio nella stanza!");
+			Stanza stanzaCorrente = partita.getStanzaCorrente();
+			if (!partita.getGiocatore().getBorsa().hasAttrezzo(nomeAttrezzo)) {
+				partita.getIo().mostraMessaggio("Che attrezzo vuoi posare?\n");
+			}
+			else {
+				Attrezzo attrezzoPosato = partita.getGiocatore().getBorsa().getAttrezzo(nomeAttrezzo);
+				if(attrezzoPosato != null) {
+					partita.getGiocatore().getBorsa().removeAttrezzoBorsa(nomeAttrezzo);
+					stanzaCorrente.addAttrezzo(attrezzoPosato);
+
+				}
+				else {
+					partita.getIo().mostraMessaggio("La borsa è vuota!");
+				}
+			}
 		}
+		partita.getIo().mostraMessaggio(partita.getStanzaCorrente().getDescrizione());
+		
 	}
 
 	@Override
 	public void setParametro(String parametro) {
 		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public String getParametro() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public void setIo(IO io) {
-		// TODO Auto-generated method stub
-		
+		this.nomeAttrezzo=parametro;
 	}
 
 	@Override
 	public String getNome() {
 		// TODO Auto-generated method stub
-		return MSG;
+		return "posa";
+	}
+
+	@Override
+	public String getParametro() {
+		// TODO Auto-generated method stub
+		return this.nomeAttrezzo;
 	}
 
 }

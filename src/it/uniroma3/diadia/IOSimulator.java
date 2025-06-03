@@ -2,51 +2,88 @@ package it.uniroma3.diadia;
 
 public class IOSimulator implements IO {
 
-	private String[] righeLette;
-	private int indexRigheLette;
-
-	public String[] getMessaggiProdotti() {
-		return messaggiProdotti;
+	private String[] comandi;
+	private String[] messaggi;
+	private int comandoCorrente;
+	private int messaggioCorrente;
+	
+	public IOSimulator(String[] inputComandi, String[] output) {
+		this.messaggi=output; 
+		this.comandi=inputComandi;
+		this.comandoCorrente=0;
+		this.messaggioCorrente=0;
+	}
+	
+	
+	
+	public String[] getComandi() {
+		return comandi;
 	}
 
-	public void setMessaggiProdotti(String[] messaggiProdotti) {
-		this.messaggiProdotti = messaggiProdotti;
+
+
+	public void setComandi(String[] comandi) {
+		this.comandi = comandi;
 	}
 
-	private String[] messaggiProdotti;
-	private int indexMessaggiProdotti;
-	private int indexMessaggiMostrati;
 
-	public IOSimulator(String[] righeDaLeggere) {
-		this.righeLette = righeDaLeggere;
-		this.indexRigheLette = 0;
-		this.indexMessaggiMostrati = 0;
-		this.messaggiProdotti = new String[42*23];
+
+	public String[] getMessaggi() {
+		return messaggi;
+	}
+
+
+
+	public void setMessaggi(String[] messaggi) {
+		this.messaggi = messaggi;
+	}
+
+
+
+	public int getComandoCorrente() {
+		return comandoCorrente;
+	}
+
+
+
+	public void setComandoCorrente(int comandoCorrente) {
+		this.comandoCorrente = comandoCorrente;
+	}
+
+
+
+	public int getMessaggioCorrente() {
+		return messaggioCorrente;
+	}
+
+
+
+	public void setMessaggioCorrente(int messaggioCorrente) {
+		this.messaggioCorrente = messaggioCorrente;
+	}
+
+
+
+	@Override
+	public void mostraMessaggio(String messaggio) {
+		// TODO Auto-generated method stub
+		if(messaggioCorrente<messaggi.length) {
+			messaggi[messaggioCorrente]=messaggio;
+			messaggioCorrente++;
+		}
+		
+		
 	}
 
 	@Override
 	public String leggiRiga() {
-		String riga = null;
-		riga = this.righeLette[indexRigheLette];
-		this.indexRigheLette++;
-		return riga;
-	}
-
-	@Override
-	public void mostraMessaggio(String msg) {
-		this.messaggiProdotti[indexMessaggiProdotti] = msg;
-		this.indexMessaggiProdotti++;
-	}
-
-	public String nextMessaggio() {
-		String next = this.messaggiProdotti[this.indexMessaggiMostrati];
-		this.indexMessaggiMostrati++;
-		return next;
-	}
-
-	public boolean hasNextMessaggio() {
-		return (this.indexMessaggiMostrati < this.indexMessaggiProdotti);
+		// TODO Auto-generated method stub
+		if(comandoCorrente<comandi.length) {
+			String riga=comandi[comandoCorrente];
+			comandoCorrente++;
+			return riga;
+		}
+		return "fine";
 	}
 
 }
-

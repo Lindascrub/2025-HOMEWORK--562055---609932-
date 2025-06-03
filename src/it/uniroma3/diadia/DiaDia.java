@@ -1,4 +1,9 @@
 package it.uniroma3.diadia;
+
+import java.util.Scanner;
+
+import it.uniroma3.diadia.ambienti.Stanza;
+import it.uniroma3.diadia.attrezzi.Attrezzo;
 import it.uniroma3.diadia.comandi.Comando;
 import it.uniroma3.diadia.comandi.FabbricaDiComandiFisarmonica;
 
@@ -14,11 +19,9 @@ import it.uniroma3.diadia.comandi.FabbricaDiComandiFisarmonica;
  * @version base
  */
 
-
-
 public class DiaDia {
 
-	public static final String MESSAGGIO_BENVENUTO = ""+
+	static final private String MESSAGGIO_BENVENUTO = ""+
 			"Ti trovi nell'Universita', ma oggi e' diversa dal solito...\n" +
 			"Meglio andare al piu' presto in biblioteca a studiare. Ma dov'e'?\n"+
 			"I locali sono popolati da strani personaggi, " +
@@ -32,20 +35,20 @@ public class DiaDia {
 	private Partita partita;
 	private IO io;
 
-	public DiaDia(IO console) {
-		this.io = console;
-		this.partita = new Partita();
+	public DiaDia(IO io) {
+		this.partita = new Partita(io);
+		this.io = io;
 	}
-
 	public void gioca() {
 		String istruzione; 
-		io.mostraMessaggio(MESSAGGIO_BENVENUTO);
-		do {
+
+
+		io.mostraMessaggio(MESSAGGIO_BENVENUTO);	
+		do		
 			istruzione = io.leggiRiga();
-
-		}while (!processaIstruzione(istruzione) );
-
+		while (!processaIstruzione(istruzione));
 	}   
+
 
 	/**
 	 * Processa una istruzione 
@@ -54,25 +57,26 @@ public class DiaDia {
 	 */
 	private boolean processaIstruzione(String istruzione) {
 		Comando comandoDaEseguire;
-		FabbricaDiComandiFisarmonica factory = new FabbricaDiComandiFisarmonica(this.io);
-		comandoDaEseguire = factory.costruisciComando(istruzione);
+
+		FabbricaDiComandiFisarmonica factory= new FabbricaDiComandiFisarmonica();
+		
+		comandoDaEseguire=factory.costruisciComando(istruzione);
 		comandoDaEseguire.esegui(this.partita);
-		if (this.partita.vinta())
-		io.mostraMessaggio("Hai vinto!");
-		if (!this.partita.giocatoreIsVivo())
-			io.mostraMessaggio("Hai esaurito i CFU...");
-		return this.partita.isFinita();
+		if(this.partita.vinta()) {
+			partita.getIo().mostraMessaggio("Hai vinto!");
 		}
-	// implementazioni dei comandi dell'utente:
-	
-	/**
-	 * Stampa informazioni di aiuto.
-	 */
+		if(!this.partita.giocatoreIsVivo()) {
+			partita.getIo().mostraMessaggio("Hai esaurito i CFU...");
+		}
+		return this.partita.isFinita();
+	}   
+
+
 
 	public static void main(String[] argc) {
-		IO console = new IOConsole();
-		DiaDia gioco = new DiaDia(console);
+		IO io = new IOConsole();
+		DiaDia gioco = new DiaDia(io);
 		gioco.gioca();
+		
 	}
-
 }

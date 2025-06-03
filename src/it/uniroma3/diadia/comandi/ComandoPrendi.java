@@ -1,48 +1,50 @@
 package it.uniroma3.diadia.comandi;
 
-import it.uniroma3.diadia.IO.*;
-import it.uniroma3.diadia.IO;
 import it.uniroma3.diadia.Partita;
+import it.uniroma3.diadia.ambienti.Stanza;
 import it.uniroma3.diadia.attrezzi.Attrezzo;
 
 public class ComandoPrendi implements Comando {
 
-	private IO io;
 	private String nomeAttrezzo;
-	private final static String NOME = "prendi";
 
-	
 	@Override
 	public void esegui(Partita partita) {
-		Attrezzo a = partita.getLabirinto().getStanzaCorrente().getAttrezzo(nomeAttrezzo);
-		if(partita.getGiocatore().getBorsa().getPesoRimanente(a)) {
-			partita.getGiocatore().getBorsa().addAttrezzo(a);
-			partita.getLabirinto().getStanzaCorrente().removeAttrezzo(a);
-		} 
-		else {
-			io.mostraMessaggio("Attrezzo troppo pesante per entrare nella borsa!");
+		if( nomeAttrezzo == null) {
+			partita.getIo().mostraMessaggio("Che attrezzo vuoi prendere?\nAttrezzo inesistente!\n");
+		}else {
+			//se {
+			Stanza stanzaCorrente = partita.getStanzaCorrente();
+			if (!stanzaCorrente.hasAttrezzo(nomeAttrezzo)) {
+				partita.getIo().mostraMessaggio("Che attrezzo vuoi prendere?\n");
+			}
+			else {
+				Attrezzo attrezzoPreso = stanzaCorrente.getAttrezzo(nomeAttrezzo);
+				if(partita.getGiocatore().getBorsa().addAttrezzo(attrezzoPreso)) {
+					stanzaCorrente.removeAttrezzo(attrezzoPreso);
+
+				}
+				else {
+					partita.getIo().mostraMessaggio("La borsa è piena!");
+				}
+			}
+			partita.getIo().mostraMessaggio(partita.getStanzaCorrente().getDescrizione());
 		}
 	}
-
 	@Override
 	public void setParametro(String parametro) {
-		this.nomeAttrezzo  = parametro;
-
+		// TODO Auto-generated method stub
+		this.nomeAttrezzo=parametro;
 	}
-
-	@Override
-	public String getParametro() {
-		return this.nomeAttrezzo;
-	}
-
-	@Override
-	public void setIo(IO io) {
-		this.io = io;
-	}
-	
 	@Override
 	public String getNome() {
-		return NOME;
+		// TODO Auto-generated method stub
+		return "prendi";
+	}
+	@Override
+	public String getParametro() {
+		// TODO Auto-generated method stub
+		return this.nomeAttrezzo;
 	}
 
 }
