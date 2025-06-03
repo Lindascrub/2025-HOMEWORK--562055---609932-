@@ -20,13 +20,13 @@ import it.uniroma3.diadia.personaggi.AbstractPersonaggio;
  * @author docente di POO 
  * @see Attrezzo
  * @version base
-*/
+ */
 
 public class Stanza {
-	
+
 	static final private int NUMERO_MASSIMO_DIREZIONI = 4;
 	static final private int NUMERO_MASSIMO_ATTREZZI = 10;
-	
+
 	// 20-08
 
 	private String nome;
@@ -36,12 +36,12 @@ public class Stanza {
 	private Map<Direzione, Stanza> direzioni2stanze;
 	private int numeroStanzeAdiacenti;
 	private AbstractPersonaggio personaggio;
-	
-		
-		/**
-		 * Crea una stanza. Non ci sono stanze adiacenti, non ci sono attrezzi.
-		 * @param nome il nome della stanza
-		 */
+
+
+	/**
+	 * Crea una stanza. Non ci sono stanze adiacenti, non ci sono attrezzi.
+	 * @param nome il nome della stanza
+	 */
 	public Stanza(String nome) {
 		this.nome = nome;
 		this.numeroStanzeAdiacenti = 0;
@@ -80,16 +80,16 @@ public class Stanza {
 	 * @param direzione direzione in cui sara' posta la stanza adiacente.
 	 * @param stanza stanza adiacente nella direzione indicata dal primo parametro.
 	 */
-		public void impostaStanzaAdiacente(Direzione direzione, Stanza stanza) {
-			boolean aggiornato = false;
-			/*
+	public void impostaStanzaAdiacente(Direzione direzione, Stanza stanza) {
+		boolean aggiornato = false;
+		/*
 					for(int i=0; i<this.direzioni.size(); i++)
 						if (direzione.equals(this.direzioni.get(i))) {
 							this.stanzeAdiacenti.add(stanza);
 							aggiornato = true;
 					}
-			*/
-		
+		 */
+
 		if (direzioni2stanze.containsKey(direzione)) {
 			this.direzioni2stanze.put(direzione,stanza);
 			aggiornato = true;
@@ -217,7 +217,7 @@ public class Stanza {
 
 	@Override
 	public boolean equals(Object obj) {
-		
+
 		if (this == obj)
 			return true;
 		if (obj == null)
@@ -231,11 +231,11 @@ public class Stanza {
 	public void setPersonaggio(AbstractPersonaggio ap) {
 		this.personaggio = ap;
 	}
-	
+
 	public AbstractPersonaggio getPersonaggio() {
 		return this.personaggio;
 	}
-	
+
 
 	public int getNumeroAttrezzi() {
 		return numeroAttrezzi;
