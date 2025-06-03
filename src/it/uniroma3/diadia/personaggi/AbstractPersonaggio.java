@@ -1,4 +1,4 @@
-package it.uniroma3.personaggi;
+package it.uniroma3.diadia.personaggi;
 //20 08
 import it.uniroma3.diadia.Partita;
 import it.uniroma3.diadia.attrezzi.Attrezzo;

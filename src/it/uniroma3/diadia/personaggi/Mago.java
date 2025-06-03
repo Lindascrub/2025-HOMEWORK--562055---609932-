@@ -1,8 +1,8 @@
-package it.uniroma3.personaggi;
+package it.uniroma3.diadia.personaggi;
 //20 16
 import it.uniroma3.diadia.Partita;
 import it.uniroma3.diadia.attrezzi.Attrezzo;
-
+//es 14
 public class Mago extends AbstractPersonaggio {
 	private static final String MESSAGGIO_DONO = "Sei un vero simpaticone, " +
 			"con una mia magica azione, troverai un nuovo oggetto " +
@@ -17,7 +17,7 @@ public class Mago extends AbstractPersonaggio {
 	public String agisci(Partita partita) {
 		String msg;
 		if (this.attrezzo!=null) {
-			partita.getStanzaCorrente().addAttrezzo(this.attrezzo);
+			((Object) partita.getStanzaCorrente()).addAttrezzo(this.attrezzo);
 			this.attrezzo = null;
 			msg = MESSAGGIO_DONO;
 		}

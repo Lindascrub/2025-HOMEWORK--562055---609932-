@@ -18,7 +18,7 @@ public class Borsa {
 	public final static int DEFAULT_PESO_MAX_BORSA = Configuratore.getPesoMax();
 	public final static int CFU_INIZIALI = 20;
 	private Map<String, Attrezzo> nome2attrezzi;
-	private int numeroAttrezzi; //max attrezzi
+	private int numeroAttrezzi; 
 	private int pesoMax;
 	private int pesoCorrente;
 	

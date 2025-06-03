@@ -1,15 +1,16 @@
 package it.uniroma3.diadia.giocatore;
 
-import java.util.ArrayList;
+import it.uniroma3.diadia.Configuratore;
 
-import it.uniroma3.diadia.attrezzi.Attrezzo;
 
 public class Giocatore {
+	static final private int CFU_INIZIALI = Configuratore.getCFU();
 	private int cfu;
 	private Borsa borsa;
 	
 
 	public Giocatore() {
+		this.cfu = CFU_INIZIALI;
 		this.setBorsa(new Borsa());
 	}
 

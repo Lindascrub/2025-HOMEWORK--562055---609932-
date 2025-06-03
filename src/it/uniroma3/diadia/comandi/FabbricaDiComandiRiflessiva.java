@@ -4,6 +4,10 @@ import java.util.Scanner;
 //19-20 18-18
 
 		public class FabbricaDiComandiRiflessiva implements FabbricaDiComandi {
+			public FabbricaDiComandiRiflessiva(IO io) {
+				// TODO Auto-generated constructor stub
+			}
+
 			public Comando costruisciComando(String istruzione) throws Exception {
 			Scanner scannerDiParole = new Scanner(istruzione); // es. ‘vai sud’
 			String nomeComando = null; // es. ‘vai’
