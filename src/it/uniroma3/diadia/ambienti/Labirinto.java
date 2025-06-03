@@ -210,7 +210,7 @@ public class Labirinto {
 	}
 
 	public LabirintoBuilder addStanzaBloccata(String nome, String attrezzoSbloccante, String direzioneBloccata) {
-		Stanza stanza = new StanzaBloccata(nome, attrezzoSbloccante, Direzione.valueOf(direzioneBloccata));
+		Stanza stanza = new StanzaBloccata(nome, Direzione.valueOf(direzioneBloccata), attrezzoSbloccante);
 		this.UltimaStanzaAggiuntaEAggiorna(stanza);
 		return this;
 	}

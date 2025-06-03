@@ -3,10 +3,7 @@ package it.uniroma3.diadia;
 import java.util.Scanner;
 
 import it.uniroma3.diadia.ambienti.Labirinto;
-import it.uniroma3.diadia.ambienti.Stanza;
-import it.uniroma3.diadia.attrezzi.Attrezzo;
 import it.uniroma3.diadia.comandi.Comando;
-import it.uniroma3.diadia.comandi.FabbricaDiComandiFisarmonica;
 import it.uniroma3.diadia.comandi.FabbricaDiComandiRiflessiva;
 
 /**
@@ -43,8 +40,13 @@ public class DiaDia {
 	public void gioca() {
 		String istruzione; 
 		io.mostraMessaggio(MESSAGGIO_BENVENUTO);	
-		do	istruzione = io.leggiRiga();
-		while (!processaIstruzione(istruzione));
+		try {
+			do	istruzione = io.leggiRiga();
+			while (!processaIstruzione(istruzione));
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}   
 
 
