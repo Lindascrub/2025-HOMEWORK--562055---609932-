@@ -5,13 +5,14 @@ import it.uniroma3.diadia.Partita;
 public class ComandoGuarda extends AbstractComando {
 
 	private final static String NOME = "guarda";
+	
 	@Override
 	public void esegui(Partita partita) {
-		// TODO Auto-generated method stub
 		this.getIo().mostraMessaggio(partita.getStanzaCorrente().getDescrizione());
 		this.getIo().mostraMessaggio("Hai ancora: "+partita.getGiocatore().getCfu()+ "CFU");
 		this.getIo().mostraMessaggio(partita.getGiocatore().getBorsa().toString());
 	}
+	
 	public String getNome() {
 		return NOME;
 	}

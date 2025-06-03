@@ -1,52 +1,46 @@
 package it.uniroma3.diadia.comandi;
 
 import it.uniroma3.diadia.Partita;
+import it.uniroma3.diadia.ambienti.Direzione;
 import it.uniroma3.diadia.ambienti.Stanza;
+import it.uniroma3.diadia.giocatore.Giocatore;
 
-public class ComandoVai implements Comando {
+public class ComandoVai extends AbstractComando {
+	
+	private final static String NOME = "vai";
 
-	private String direzione;
-	
-	/*public ComandoVai(String direzione) {
-		this.direzione=direzione;
-	}*/
-	
+	/**
+	 * esecuzione del comando
+	 */
 	@Override
 	public void esegui(Partita partita) {
-		// TODO Auto-generated method stub
-		Stanza stanzaCorrente=partita.getStanzaCorrente();
-		Stanza prossimaStanza=null;
-		if(direzione==null) {
-			partita.getIo().mostraMessaggio("Dove vuoi andare? Devi specificare una direzione");
+		Stanza stanzaCorrente = partita.getStanzaCorrente();
+		Stanza prossimaStanza = null;
+		if (this.getParametro() == null) {
+			this.getIo().mostraMessaggio("Dove vuoi andare? Devi specificare una direzione");
+		}
+		if(this.getParametro()!=null )
+			try {
+			prossimaStanza = stanzaCorrente.getStanzaAdiacente(Direzione.valueOf(this.getParametro()));
+			} catch(IllegalArgumentException e) {
+				this.getIo().mostraMessaggio("Direzione inesistente");
+				return;
+			}
+			
+			if (prossimaStanza == null) {
+			this.getIo().mostraMessaggio("Direzione inesistente");
 			return;
 		}
-		prossimaStanza=stanzaCorrente.getStanzaAdiacente(this.direzione);
-		if(prossimaStanza==null) {
-			partita.getIo().mostraMessaggio("Direzione inesistente");
-			return;
-		}
-		partita.setStanzaCorrente(prossimaStanza);
-		partita.getIo().mostraMessaggio(partita.getStanzaCorrente().getNome());
-		partita.getGiocatore().setCfu(partita.getGiocatore().getCfu()-1);
-		
-	}
 
-	@Override
-	public void setParametro(String parametro) {
-		// TODO Auto-generated method stub
-		this.direzione=parametro;
+		partita.setStanzaCorrente(prossimaStanza);
+		this.getIo().mostraMessaggio(partita.getStanzaCorrente().getNome());
+		Giocatore giocatore = partita.getGiocatore();
+		giocatore.setCfu(giocatore.getCfu() - 1);
 	}
 
 	@Override
 	public String getNome() {
-		// TODO Auto-generated method stub
-		return "vai";
-	}
-
-	@Override
-	public String getParametro() {
-		// TODO Auto-generated method stub
-		return this.direzione;
+		return NOME;
 	}
 
 }

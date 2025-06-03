@@ -73,4 +73,14 @@ public class Partita {
 		return this.giocatore.getCfu()>0;
 	}
 
+	public void setStanzaCorrente(Stanza prossimaStanza) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public Stanza getStanzaCorrente() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

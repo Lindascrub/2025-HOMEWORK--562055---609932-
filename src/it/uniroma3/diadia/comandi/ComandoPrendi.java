@@ -1,50 +1,33 @@
 package it.uniroma3.diadia.comandi;
 
 import it.uniroma3.diadia.Partita;
-import it.uniroma3.diadia.ambienti.Stanza;
 import it.uniroma3.diadia.attrezzi.Attrezzo;
 
-public class ComandoPrendi implements Comando {
+public class ComandoPrendi extends AbstractComando {
 
-	private String nomeAttrezzo;
+	private final static String NOME = "prendi";
 
+	
 	@Override
 	public void esegui(Partita partita) {
-		if( nomeAttrezzo == null) {
-			partita.getIo().mostraMessaggio("Che attrezzo vuoi prendere?\nAttrezzo inesistente!\n");
-		}else {
-			//se {
-			Stanza stanzaCorrente = partita.getStanzaCorrente();
-			if (!stanzaCorrente.hasAttrezzo(nomeAttrezzo)) {
-				partita.getIo().mostraMessaggio("Che attrezzo vuoi prendere?\n");
+		Attrezzo a = partita.getLabirinto().getStanzaCorrente().getAttrezzo(this.getParametro());
+		if(a==null) {
+			this.getIo().mostraMessaggio("Attrezzo non presente nella stanza!");
+		} 
+		else {
+			if(partita.getGiocatore().getBorsa().getPesoRimanente(a)) {
+				partita.getGiocatore().getBorsa().addAttrezzo(a);
+				partita.getLabirinto().getStanzaCorrente().removeAttrezzo(a);
+			} 
+			else
+				this.getIo().mostraMessaggio("Attrezzo troppo pesante per entrare nella borsa!");
 			}
-			else {
-				Attrezzo attrezzoPreso = stanzaCorrente.getAttrezzo(nomeAttrezzo);
-				if(partita.getGiocatore().getBorsa().addAttrezzo(attrezzoPreso)) {
-					stanzaCorrente.removeAttrezzo(attrezzoPreso);
+	}
 
-				}
-				else {
-					partita.getIo().mostraMessaggio("La borsa è piena!");
-				}
-			}
-			partita.getIo().mostraMessaggio(partita.getStanzaCorrente().getDescrizione());
-		}
-	}
-	@Override
-	public void setParametro(String parametro) {
-		// TODO Auto-generated method stub
-		this.nomeAttrezzo=parametro;
-	}
 	@Override
 	public String getNome() {
-		// TODO Auto-generated method stub
-		return "prendi";
-	}
-	@Override
-	public String getParametro() {
-		// TODO Auto-generated method stub
-		return this.nomeAttrezzo;
+		return NOME;
 	}
 
 }
+

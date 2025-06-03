@@ -17,7 +17,7 @@ public class Mago extends AbstractPersonaggio {
 	public String agisci(Partita partita) {
 		String msg;
 		if (this.attrezzo!=null) {
-			((Object) partita.getStanzaCorrente()).addAttrezzo(this.attrezzo);
+			partita.getStanzaCorrente().addAttrezzo(this.attrezzo);
 			this.attrezzo = null;
 			msg = MESSAGGIO_DONO;
 		}
@@ -25,5 +25,10 @@ public class Mago extends AbstractPersonaggio {
 			msg = MESSAGGIO_SCUSE;
 		}
 		return msg;
+	}
+	@Override
+	public String riceviRegalo(Attrezzo attrezzo, Partita partita) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }
