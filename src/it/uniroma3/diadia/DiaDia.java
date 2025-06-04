@@ -2,6 +2,8 @@ package it.uniroma3.diadia;
 
 import java.util.Scanner;
 
+import it.uniroma3.diadia.ambienti.Labirinto;
+import it.uniroma3.diadia.ambienti.LabirintoBuilder;
 import it.uniroma3.diadia.ambienti.Stanza;
 import it.uniroma3.diadia.attrezzi.Attrezzo;
 import it.uniroma3.diadia.comandi.Comando;
@@ -34,9 +36,22 @@ public class DiaDia {
 
 	private Partita partita;
 	private IO io;
+	
 
 	public DiaDia(IO io) {
-		this.partita = new Partita(io);
+		Labirinto lab= new LabirintoBuilder()
+				.addStanzaIniziale("salone")
+				.addAttrezzo("osso", 2)
+				.addAttrezzo("osso", 3)
+				.addStanza("corridoio")
+				.addAttrezzo("vaso", 4)
+				.addStanzaVincente("bagno")
+				.addAdiacenza("salone", "corridoio", "nord")
+				.addAdiacenza("corridoio", "salone", "sud")
+				.addAdiacenza("bagno", "corridoio", "sud")
+				.addAdiacenza("corridoio", "bagno", "nord")
+				.getLabirinto();
+		this.partita = new Partita(io,lab);
 		this.io = io;
 	}
 	public void gioca() {

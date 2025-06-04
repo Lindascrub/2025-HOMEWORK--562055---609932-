@@ -70,7 +70,7 @@ public class Labirinto {
 		laboratorio.addAttrezzo(piombo);
 
 		// il gioco comincia nell'atrio
-        this.setStanzaCorrente(atrio);  
+        this.setStanzaIniziale(atrio);  
 		this.setStanzaVincente(biblioteca);
     }
 
@@ -78,8 +78,8 @@ public class Labirinto {
 		return stanzaIniziale;
 	}
 
-	public void setStanzaCorrente(Stanza stanzaCorrente) {
-		this.stanzaIniziale = stanzaCorrente;
+	public void setStanzaIniziale(Stanza stanzaIniziale) {
+		this.stanzaIniziale = stanzaIniziale;
 	}
 
 	public Stanza getStanzaVincente() {

@@ -39,7 +39,10 @@ public class Partita {
 		this.io=io;
 	}
 
-
+	public Partita(IO io, Labirinto labirinto) {
+		this(io,CFU_INIZIALI,labirinto);
+	}
+	
 	public IO getIo() {
 		return this.io;
 	}
@@ -83,6 +86,11 @@ public class Partita {
 	public Labirinto getLabirinto() {
 		return this.labirinto;
 	}
+	
+	public void setLabirinto(Labirinto labirinto) {
+		this.labirinto=labirinto;
+	}
+	
 	public Giocatore getGiocatore() {
 		return this.giocatore;
 	}
