@@ -27,6 +27,7 @@ public class Labirinto {
 		Attrezzo osso = new Attrezzo("osso",1);
 		Attrezzo torcia=new Attrezzo("torcia", 1);
 		Attrezzo chiave=new Attrezzo("evaihc", 2);
+		Attrezzo piombo=new Attrezzo("piombo", 10);
     	
 		/* crea stanze del labirinto */
 		Stanza atrio = new Stanza("Atrio");
@@ -66,6 +67,7 @@ public class Labirinto {
 		atrio.addAttrezzo(osso);
 		aulaN11.addAttrezzo(torcia);
 		stanzaBuia.addAttrezzo(chiave);
+		laboratorio.addAttrezzo(piombo);
 
 		// il gioco comincia nell'atrio
         this.setStanzaCorrente(atrio);  
