@@ -112,6 +112,12 @@ public class Borsa {
 		return peso2attrezzi;
 	}
 	
+	public SortedSet<Attrezzo> getSortedSetOrdinatoPerPeso(){
+		SortedSet<Attrezzo> attrezziOrdinati=new TreeSet<Attrezzo>(this.attrezzi);
+		return attrezziOrdinati;
+				
+	}
+	
 	@Override
 	public String toString() {
 		StringBuilder s = new StringBuilder();

@@ -2,6 +2,7 @@ package it.uniroma3.diadia.giocatore;
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
@@ -21,7 +22,7 @@ import it.uniroma3.diadia.attrezzi.Attrezzo;
 import it.uniroma3.diadia.attrezzi.ComparatoreNomeAttrezzi;
 import it.uniroma3.diadia.giocatore.Borsa;
 
-class BorsaTest {
+public class BorsaTest {
 
 	private Borsa borsa;
     private Attrezzo attrezzoLeggero;
@@ -30,7 +31,7 @@ class BorsaTest {
     private Attrezzo attrezzoLeggero2;
     
     @BeforeEach
-    void setUp() {
+    public void setUp() {
         borsa = new Borsa(10);
         attrezzoLeggero = new Attrezzo("Torcia", 2);
         attrezzoPesante = new Attrezzo("Incudine", 15);
@@ -39,24 +40,24 @@ class BorsaTest {
     }
     
     @Test
-    void testBorsaVuota() {
+    public void testBorsaVuota() {
         assertTrue(borsa.isEmpty());
     }
     
     @Test
-    void testAggiuntaAttrezzo() {
+    public void testAggiuntaAttrezzo() {
         assertTrue(borsa.addAttrezzo(attrezzoLeggero));
         assertFalse(borsa.isEmpty());
         assertEquals(attrezzoLeggero, borsa.getAttrezzo("Torcia"));
     }
     
     @Test
-    void testNonAggiuntaAttrezzoTroppoPesante() {
+    public void testNonAggiuntaAttrezzoTroppoPesante() {
         assertFalse(borsa.addAttrezzo(attrezzoPesante));
     }
 
     @Test
-    void testGetContenutoOrdinatoPerPesoConTreAttrezzi() {
+    public void testGetContenutoOrdinatoPerPesoConTreAttrezzi() {
     	this.borsa=new Borsa(50);
     	List<Attrezzo> exp=new ArrayList<Attrezzo>();
     	exp.add(attrezzoLeggero);
@@ -69,9 +70,10 @@ class BorsaTest {
     }
     
     @Test
-    void testGetContenutoOrdinatoPerNomeConTreAttrezzi() {
+    public void testGetContenutoOrdinatoPerNomeConTreAttrezzi() {
     	this.borsa=new Borsa(50);
-    	SortedSet<Attrezzo> exp = new TreeSet<Attrezzo>();
+    	Comparator<Attrezzo> cmp=new ComparatoreNomeAttrezzi();
+    	SortedSet<Attrezzo> exp = new TreeSet<Attrezzo>(cmp);
     	exp.add(attrezzoPesante);
     	exp.add(attrezzoMedio);
     	exp.add(attrezzoLeggero);
@@ -82,7 +84,7 @@ class BorsaTest {
     }
     
     @Test
-    void testGetContenutoRaggruppatoPerPesoConTreAttrezziDiPesoDiverso() {
+    public void testGetContenutoRaggruppatoPerPesoConTreAttrezziDiPesoDiverso() {
     	this.borsa=new Borsa(50);
     	Map<Integer,Set<Attrezzo>> exp = new HashMap<Integer, Set<Attrezzo>>();
     	
@@ -101,14 +103,16 @@ class BorsaTest {
     	borsa.addAttrezzo(attrezzoLeggero);
     	borsa.addAttrezzo(attrezzoMedio);
     	borsa.addAttrezzo(attrezzoPesante);
-    	assertTrue(borsa.getContenutoRaggruppatoPerPeso().size()==3);
+    	/*assertTrue(borsa.getContenutoRaggruppatoPerPeso().size()==3);
     	assertTrue(borsa.getContenutoRaggruppatoPerPeso().containsKey(attrezzoLeggero.getPeso()));
     	assertTrue(borsa.getContenutoRaggruppatoPerPeso().containsKey(attrezzoMedio.getPeso()));
     	assertTrue(borsa.getContenutoRaggruppatoPerPeso().containsKey(attrezzoPesante.getPeso()));
-    	
+    	*/
+    	assertEquals(exp,borsa.getContenutoRaggruppatoPerPeso());
     }
     
-    void testGetContenutoRaggruppatoPerPesoConDueAttrezziDiPesoUguale() {
+    @Test
+    public void testGetContenutoRaggruppatoPerPesoConDueAttrezziDiPesoUguale() {
     	this.borsa=new Borsa(50);
     	Map<Integer,Set<Attrezzo>> exp = new HashMap<Integer, Set<Attrezzo>>();
     	Set<Attrezzo> set=new HashSet<Attrezzo>();
@@ -118,10 +122,10 @@ class BorsaTest {
     	borsa.addAttrezzo(attrezzoLeggero);
     	borsa.addAttrezzo(attrezzoLeggero2);
     	assertEquals(exp,borsa.getContenutoRaggruppatoPerPeso());
-    	
     }
     
-    void testGetContenutoRaggruppatoPerPesoConTreAttrezziDueDiPesoUguale() {
+    @Test
+    public void testGetContenutoRaggruppatoPerPesoConTreAttrezziDueDiPesoUguale() {
     	this.borsa=new Borsa(50);
     	Map<Integer,Set<Attrezzo>> exp = new HashMap<Integer, Set<Attrezzo>>();
     	Set<Attrezzo> set1=new HashSet<Attrezzo>();
@@ -137,7 +141,13 @@ class BorsaTest {
     	assertEquals(exp,borsa.getContenutoRaggruppatoPerPeso());
     }
     
-    
+    @Test
+    public void testGetSortedSetOrdinatoPerPeso() {
+    	SortedSet<Attrezzo> exp=new TreeSet<Attrezzo>(Arrays.asList(attrezzoLeggero,attrezzoMedio));
+    	borsa.addAttrezzo(attrezzoLeggero);
+    	borsa.addAttrezzo(attrezzoMedio);
+    	assertEquals(exp,borsa.getSortedSetOrdinatoPerPeso());
+    }
     
     
     
