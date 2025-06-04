@@ -27,6 +27,7 @@ class BorsaTest {
     private Attrezzo attrezzoLeggero;
     private Attrezzo attrezzoPesante;
     private Attrezzo attrezzoMedio;
+    private Attrezzo attrezzoLeggero2;
     
     @BeforeEach
     void setUp() {
@@ -34,6 +35,7 @@ class BorsaTest {
         attrezzoLeggero = new Attrezzo("Torcia", 2);
         attrezzoPesante = new Attrezzo("Incudine", 15);
         attrezzoMedio = new Attrezzo("pala", 4);
+        attrezzoLeggero2 = new Attrezzo("osso", 2);
     }
     
     @Test
@@ -106,13 +108,56 @@ class BorsaTest {
     	
     }
     
-    void testGetContenutoRaggruppatoPerPesoConTreAttrezziDiPesoUguale() {
+    void testGetContenutoRaggruppatoPerPesoConDueAttrezziDiPesoUguale() {
     	this.borsa=new Borsa(50);
     	Map<Integer,Set<Attrezzo>> exp = new HashMap<Integer, Set<Attrezzo>>();
     	Set<Attrezzo> set=new HashSet<Attrezzo>();
     	set.add(attrezzoLeggero);
+    	set.add(attrezzoLeggero2);
     	exp.put(attrezzoLeggero.getPeso(), set);
-    	exp.get(attrezzoLeggero.getPeso()).add(attrezzoLeggero);
+    	borsa.addAttrezzo(attrezzoLeggero);
+    	borsa.addAttrezzo(attrezzoLeggero2);
+    	assertEquals(exp,borsa.getContenutoRaggruppatoPerPeso());
     	
     }
+    
+    void testGetContenutoRaggruppatoPerPesoConTreAttrezziDueDiPesoUguale() {
+    	this.borsa=new Borsa(50);
+    	Map<Integer,Set<Attrezzo>> exp = new HashMap<Integer, Set<Attrezzo>>();
+    	Set<Attrezzo> set1=new HashSet<Attrezzo>();
+    	Set<Attrezzo> set2=new HashSet<Attrezzo>();
+    	set1.add(attrezzoLeggero);
+    	set1.add(attrezzoLeggero2);
+    	set2.add(attrezzoPesante);
+    	exp.put(attrezzoLeggero.getPeso(), set1);
+    	exp.put(attrezzoPesante.getPeso(), set2);
+    	borsa.addAttrezzo(attrezzoLeggero);
+    	borsa.addAttrezzo(attrezzoLeggero2);
+    	borsa.addAttrezzo(attrezzoPesante);
+    	assertEquals(exp,borsa.getContenutoRaggruppatoPerPeso());
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 }
