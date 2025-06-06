@@ -1,8 +1,15 @@
 package it.uniroma3.diadia.comandi;
 
+<<<<<<< HEAD
 import it.uniroma3.diadia.IO;
 import it.uniroma3.diadia.Partita;
 // es 12
+=======
+import it.uniroma3.diadia.*;
+
+import it.uniroma3.diadia.Partita;
+
+>>>>>>> Mariella
 public abstract class AbstractComando implements Comando{
 
 	private IO io;
@@ -36,3 +43,7 @@ public abstract class AbstractComando implements Comando{
 		return NOME;
 	}
 }
+<<<<<<< HEAD
+=======
+
+>>>>>>> Mariella

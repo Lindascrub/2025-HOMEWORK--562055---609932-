@@ -1,89 +1,55 @@
 package it.uniroma3.diadia;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class IOSimulator implements IO {
+// es 7
+	private List<String> righeLette;
+	private int indiceRigheLette;
 
-	private String[] comandi;
-	private String[] messaggi;
-	private int comandoCorrente;
-	private int messaggioCorrente;
-	
-	public IOSimulator(String[] inputComandi, String[] output) {
-		this.messaggi=output; 
-		this.comandi=inputComandi;
-		this.comandoCorrente=0;
-		this.messaggioCorrente=0;
-	}
-	
-	
-	
-	public String[] getComandi() {
-		return comandi;
+	public List<String> getMessaggiProdotti() {
+		return messaggiProdotti;
 	}
 
-
-
-	public void setComandi(String[] comandi) {
-		this.comandi = comandi;
+	public void setMessaggiProdotti(List<String> messaggiProdotti) {
+		this.messaggiProdotti = messaggiProdotti;
 	}
 
+	private List<String> messaggiProdotti;
+	private int indiceMessaggiProdotti;
+	private int indiceMessaggiMostrati;
 
-
-	public String[] getMessaggi() {
-		return messaggi;
-	}
-
-
-
-	public void setMessaggi(String[] messaggi) {
-		this.messaggi = messaggi;
-	}
-
-
-
-	public int getComandoCorrente() {
-		return comandoCorrente;
-	}
-
-
-
-	public void setComandoCorrente(int comandoCorrente) {
-		this.comandoCorrente = comandoCorrente;
-	}
-
-
-
-	public int getMessaggioCorrente() {
-		return messaggioCorrente;
-	}
-
-
-
-	public void setMessaggioCorrente(int messaggioCorrente) {
-		this.messaggioCorrente = messaggioCorrente;
-	}
-
-
-
-	@Override
-	public void mostraMessaggio(String messaggio) {
-		// TODO Auto-generated method stub
-		if(messaggioCorrente<messaggi.length) {
-			messaggi[messaggioCorrente]=messaggio;
-			messaggioCorrente++;
-		}
-		
-		
+	public IOSimulator(List<String> righeDaLeggere) {
+		this.righeLette = righeDaLeggere;
+		this.indiceRigheLette = 0;
+		this.indiceMessaggiMostrati = 0;
+		this.messaggiProdotti = new ArrayList<String>();
 	}
 
 	@Override
 	public String leggiRiga() {
-		// TODO Auto-generated method stub
-		if(comandoCorrente<comandi.length) {
-			String riga=comandi[comandoCorrente];
-			comandoCorrente++;
-			return riga;
-		}
-		return "fine";
+		String riga = null;
+
+		riga = this.righeLette.get(indiceRigheLette);
+		this.indiceRigheLette++;
+		return riga;
+	}
+
+	@Override
+	public void mostraMessaggio(String msg) {
+		this.messaggiProdotti.add(this.indiceMessaggiProdotti, msg);
+		this.indiceMessaggiProdotti++;
+	}
+
+	public String nextMessaggio() {
+		String next = this.messaggiProdotti.get(indiceMessaggiMostrati);
+		this.indiceMessaggiMostrati++;
+		return next;
+	}
+
+	public boolean hasNextMessaggio() {
+		return this.indiceMessaggiMostrati < this.indiceMessaggiProdotti;
 	}
 
 }

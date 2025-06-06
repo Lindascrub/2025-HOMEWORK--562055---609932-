@@ -23,13 +23,14 @@ public class StanzaMagica extends Stanza {
 	
 	@Override
 	public boolean addAttrezzo(Attrezzo attrezzo) {
-		this.contatoreAttrezziPosati++;
+		
 		if(this.contatoreAttrezziPosati>this.sogliaMagica)
 			attrezzo=this.modificaAttrezzo(attrezzo);
-		if(this.getNumeroAttrezzi()<this.getAttrezzi().size()) {
-			return super.addAttrezzo(attrezzo);
-		}
-		else return false;
+		//if(this.getNumeroAttrezzi()<this.getAttrezzi().size()) {
+		//return super.addAttrezzo(attrezzo);
+		//}
+		this.contatoreAttrezziPosati++;
+		return super.addAttrezzo(attrezzo);
 	}
 	
 	private Attrezzo modificaAttrezzo(Attrezzo attrezzo) {
@@ -40,5 +41,7 @@ public class StanzaMagica extends Stanza {
 		attrezzo=new Attrezzo(nomeInvertito.toString(), pesoX2);
 		return attrezzo;
 	}
-	
+
+
+
 }
