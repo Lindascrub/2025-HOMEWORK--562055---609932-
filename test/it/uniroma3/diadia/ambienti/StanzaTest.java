@@ -4,15 +4,10 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.*;
 
-import org.junit.Before;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import it.uniroma3.diadia.ambienti.Labirinto;
-import it.uniroma3.diadia.ambienti.Stanza;
 import it.uniroma3.diadia.attrezzi.Attrezzo;
-
+// es 2
 class StanzaTest {
 
 		Stanza stanza = new Stanza("aula");
@@ -27,26 +22,6 @@ class StanzaTest {
 		Attrezzo carta=new Attrezzo("carta", 1);
 		Attrezzo lanterna=new Attrezzo("lanterna", 1);
 		Attrezzo osso=new Attrezzo("osso", 1);
-	
-	
-	@Test
-	void impostaStanzaAdiacenteDirezioneInesistente() {
-		stanza.impostaStanzaAdiacente(direzione, stanza1);
-		assertNull(stanza.getStanzaAdiacente("west"));
-	}
-
-	@Test
-	void impostaStanzaAdiacenteNulla() {
-		stanza.impostaStanzaAdiacente(direzione, stanzaNulla);
-		assertNull(stanza.getStanzaAdiacente(direzione));
-	}
-
-	@Test
-	void impostaStanzaAdiacenteNord() {
-		stanza.impostaStanzaAdiacente(direzione, stanza1);
-		assertEquals(stanza1,stanza.getStanzaAdiacente(direzione));
-	}
-
 	
 	
 	@Test

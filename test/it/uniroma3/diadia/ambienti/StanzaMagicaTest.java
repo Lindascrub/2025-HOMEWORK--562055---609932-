@@ -7,7 +7,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import it.uniroma3.diadia.attrezzi.Attrezzo;
-
+// es 2
 class StanzaMagicaTest {
 
 	private Stanza stanzaMagica;
@@ -27,7 +27,7 @@ class StanzaMagicaTest {
 	@Test
 	void modificaAttrezzoTestConUnsoloAttrezzoAggiunto() {
 		this.stanzaMagica.addAttrezzo(this.lanterna);
-		assertEquals(this.lanterna,this.stanzaMagica.getAttrezzi().get(0));
+		assertEquals(this.lanterna,((Object) this.stanzaMagica.getAttrezzi()).get(0));
 	}
 
 	

@@ -97,7 +97,6 @@ public class DiaDia {
 		IO console = new IOConsole(scanner);
 
 		Labirinto labirinto = Labirinto.newBuilder("labirinto5.txt").getLabirinto();
-
 		DiaDia gioco = new DiaDia(console, labirinto);
 		gioco.gioca();
 		scanner.close();
