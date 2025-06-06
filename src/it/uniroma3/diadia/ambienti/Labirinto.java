@@ -4,7 +4,7 @@ import java.io.FileNotFoundException;
 import java.util.HashMap;
 import java.util.Map;
 
-import it.uniroma3.diadia.CaricatoreLabirinto;
+import it.uniroma3.diadia.CaricatoreLabirintoTest;
 import it.uniroma3.diadia.FormatoFileNonValidoException;
 import it.uniroma3.diadia.attrezzi.Attrezzo;
 import it.uniroma3.diadia.personaggi.Cane;
@@ -17,8 +17,7 @@ public class Labirinto {
 	private Stanza stanzaVincente;
 	
 	private Labirinto(String nomeFile) throws FileNotFoundException, FormatoFileNonValidoException {
-		CaricatoreLabirinto c =
-				new CaricatoreLabirinto(nomeFile);
+		CaricatoreLabirintoTest c = new CaricatoreLabirintoTest(nomeFile);
 		c.carica();
 		this.stanzaIniziale = c.getStanzaIniziale();
 		this.stanzaVincente = c.getStanzaVincente();

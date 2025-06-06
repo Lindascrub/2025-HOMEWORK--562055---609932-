@@ -20,7 +20,7 @@ import it.uniroma3.diadia.comandi.FabbricaDiComandiRiflessiva;
 // es
 public class DiaDia {
 
-	static final private String MESSAGGIO_BENVENUTO = ""+
+	public static final String MESSAGGIO_BENVENUTO = ""+
 			"Ti trovi nell'Universita', ma oggi e' diversa dal solito...\n" +
 			"Meglio andare al piu' presto in biblioteca a studiare. Ma dov'e'?\n"+
 			"I locali sono popolati da strani personaggi, " +
@@ -56,24 +56,7 @@ public class DiaDia {
 	 *
 	 * @return true se l'istruzione e' eseguita e il gioco continua, false altrimenti
 	 */
-/*
-		Comando comandoDaEseguire;
-		FabbricaDiComandiRiflessiva factory = new FabbricaDiComandiRiflessiva(this.io);
-		try {
-			comandoDaEseguire = factory.costruisciComando(istruzione);
-		} catch (ClassNotFoundException cne) {
-			comandoDaEseguire = factory.costruisciComando("NonValido");
-		} catch (NullPointerException npe) {
-			comandoDaEseguire = factory.costruisciComando("NonValido");
-		}
-		comandoDaEseguire.esegui(this.partita);
-		if (this.partita.vinta())
-			io.mostraMessaggio("Hai vinto!");
-		if (!this.partita.giocatoreIsVivo())
-			io.mostraMessaggio("Hai esaurito i CFU...");
-		return this.partita.isFinita();
-	}
-*/
+
 	
 	private boolean processaIstruzione(String istruzione) throws Exception {
 		Comando comandoDaEseguire;
