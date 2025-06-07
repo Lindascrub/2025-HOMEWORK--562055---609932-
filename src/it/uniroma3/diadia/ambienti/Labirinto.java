@@ -1,6 +1,5 @@
 package it.uniroma3.diadia.ambienti;
 
-import java.io.FileNotFoundException;
 import java.io.IOException;
 
 import it.uniroma3.diadia.attrezzi.Attrezzo;
@@ -14,9 +13,8 @@ public class Labirinto {
 	
 	}
 	
-	public Labirinto(String nomeFile) throws FileNotFoundException, IOException {
+	public Labirinto(String nomeFile) throws IOException {
 		CaricatoreLabirinto caricatore = new CaricatoreLabirinto(nomeFile);
-		caricatore.carica();
 		this.stanzaIniziale=caricatore.getStanzaIniziale();
 		this.stanzaVincente=caricatore.getStanzaVincente();
 	}

@@ -3,15 +3,23 @@ package it.uniroma3.diadia.ambienti;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.Reader;
 
 public class CaricatoreLabirinto {
 
 	private String nomeFile;
 	private LabirintoBuilder builder;
+	private BufferedReader reader;
 
-	public CaricatoreLabirinto(String nomeFile) {
+	public CaricatoreLabirinto(String nomeFile) throws IOException {
 		this.nomeFile = nomeFile;
 		this.builder = new LabirintoBuilder();
+		this.carica();
+	}
+	
+	public CaricatoreLabirinto(Reader reader) {
+		this.reader=new BufferedReader(reader);
+		this.builder=new LabirintoBuilder();
 	}
 
 	public void carica() throws IOException {
@@ -57,6 +65,10 @@ public class CaricatoreLabirinto {
 
 	public Stanza getStanzaVincente() {
 		return this.builder.getLabirinto().getStanzaVincente();
+	}
+	
+	public Labirinto getLabirinto() {
+		return builder.getLabirinto();
 	}
 	
 }
