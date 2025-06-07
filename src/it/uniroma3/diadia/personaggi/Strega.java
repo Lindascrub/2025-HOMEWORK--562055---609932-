@@ -11,6 +11,9 @@ public class Strega extends AbstractPersonaggio {
 	 * 	-altrimenti in quella che contiene più attrezzi
 	 */
 	
+	private static final String MESSAGGIO_SALUTATA = "Ciao!";
+	private static final String MESSAGGIO_NON_SALUTATA = "Perchè non mi hai salutata?";
+	
 	public Strega(String nome, String presentaz) {
 		super(nome, presentaz);
 		// TODO Auto-generated constructor stub
@@ -19,6 +22,9 @@ public class Strega extends AbstractPersonaggio {
 	@Override
 	public String agisci(Partita partita) {
 		// TODO Auto-generated method stub
+		
+		
+		
 		return null;
 	}
 
