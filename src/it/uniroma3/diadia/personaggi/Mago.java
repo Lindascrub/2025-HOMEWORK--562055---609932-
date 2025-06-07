@@ -31,5 +31,12 @@ public class Mago extends AbstractPersonaggio {
 		}
 		return msg;
 	}
+
+	@Override
+	public String riceviRegalo(Attrezzo attrezzo, Partita partita) {
+		Attrezzo alleggerito = new Attrezzo(attrezzo.getNome(), Math.max(1, attrezzo.getPeso() / 2));
+		partita.getStanzaCorrente().addAttrezzo(alleggerito);
+		return "Grazie per il dono! Ho usato la mia magia per alleggerirlo.";
+	}
 	
 }

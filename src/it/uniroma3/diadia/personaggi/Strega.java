@@ -4,6 +4,7 @@ import java.util.List;
 
 import it.uniroma3.diadia.Partita;
 import it.uniroma3.diadia.ambienti.Stanza;
+import it.uniroma3.diadia.attrezzi.Attrezzo;
 
 public class Strega extends AbstractPersonaggio {
 	
@@ -43,6 +44,11 @@ public class Strega extends AbstractPersonaggio {
 		}
 		
 		return messaggio;
+	}
+
+	@Override
+	public String riceviRegalo(Attrezzo attrezzo, Partita partita) {
+		return "Ahahah! Lo terrò con me, umano sciocco!";
 	}
 
 }
