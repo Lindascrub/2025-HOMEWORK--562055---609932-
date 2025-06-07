@@ -4,7 +4,7 @@ import it.uniroma3.diadia.IO;
 import it.uniroma3.diadia.Partita;
 import it.uniroma3.diadia.personaggi.AbstractPersonaggio;
 
-public class ComandoInteragisci implements Comando {
+public class ComandoInteragisci extends AbstractComando {
 	
 	private static final String MESSAGGIO_CON_CHI="Con chi dovrei interagire?...";
 	private String messaggio;
@@ -30,21 +30,8 @@ public class ComandoInteragisci implements Comando {
 	}
 
 	@Override
-	public void setParametro(String parametro) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
 	public String getNome() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public String getParametro() {
-		// TODO Auto-generated method stub
-		return null;
+		return "interagisci";
 	}
 
 }
