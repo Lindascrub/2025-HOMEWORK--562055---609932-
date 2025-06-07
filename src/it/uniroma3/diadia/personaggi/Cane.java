@@ -5,6 +5,8 @@ import it.uniroma3.diadia.giocatore.Giocatore;
 
 public class Cane extends AbstractPersonaggio {
 
+	/*NB: quando interagiamo con un cane, questi morde, togliendoci CFU a ogni morso*/
+	
 	private Giocatore giocatore; 
 	private static final String MESSAGGIO_ABBAIO="Woof, woof!";
 	

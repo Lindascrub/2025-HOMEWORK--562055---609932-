@@ -105,26 +105,7 @@ public class Stanza {
         return this.attrezzi.add(attrezzo);
     }
 
-   /**
-	* Restituisce una rappresentazione stringa di questa stanza,
-	* stampadone la descrizione, le uscite e gli eventuali attrezzi contenuti
-	* @return la rappresentazione stringa
-	*/
-    public String toString() {
-    	List<String> direzioni=new ArrayList<String>(this.direzione2stanza.keySet());
-    	StringBuilder risultato = new StringBuilder();
-    	risultato.append(this.nome);
-    	risultato.append("\nUscite: ");
-    	for (String direzione : direzioni)
-    		if (direzione!=null)
-    			risultato.append(" " + direzione);
-    	risultato.append("\nAttrezzi nella stanza: ");
-    	for (Attrezzo attrezzo : this.attrezzi) {
-    		if (attrezzo!=null)
-    			risultato.append(" " + attrezzo);
-    	}
-    	return risultato.toString();
-    }
+   
 
     /**
 	* Controlla se un attrezzo esiste nella stanza (uguaglianza sul nome).
@@ -182,5 +163,30 @@ public class Stanza {
 	public AbstractPersonaggio getPersonaggio() {
 		return this.personaggio;
 	}
+	
+	public void setPersonaggio(AbstractPersonaggio personaggio) {
+		this.personaggio=personaggio;
+	}
+	
+	/**
+	* Restituisce una rappresentazione stringa di questa stanza,
+	* stampadone la descrizione, le uscite e gli eventuali attrezzi contenuti
+	* @return la rappresentazione stringa
+	*/
+    public String toString() {
+    	List<String> direzioni=new ArrayList<String>(this.direzione2stanza.keySet());
+    	StringBuilder risultato = new StringBuilder();
+    	risultato.append(this.nome);
+    	risultato.append("\nUscite: ");
+    	for (String direzione : direzioni)
+    		if (direzione!=null)
+    			risultato.append(" " + direzione);
+    	risultato.append("\nAttrezzi nella stanza: ");
+    	for (Attrezzo attrezzo : this.attrezzi) {
+    		if (attrezzo!=null)
+    			risultato.append(" " + attrezzo);
+    	}
+    	return risultato.toString();
+    }
 
 }

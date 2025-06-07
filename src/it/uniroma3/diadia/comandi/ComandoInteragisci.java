@@ -5,7 +5,7 @@ import it.uniroma3.diadia.Partita;
 import it.uniroma3.diadia.personaggi.AbstractPersonaggio;
 
 public class ComandoInteragisci implements Comando {
-
+	
 	private static final String MESSAGGIO_CON_CHI="Con chi dovrei interagire?...";
 	private String messaggio;
 	private IO io;
