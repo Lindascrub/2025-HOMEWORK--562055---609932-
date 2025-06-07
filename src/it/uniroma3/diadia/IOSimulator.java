@@ -1,13 +1,15 @@
 package it.uniroma3.diadia;
 
+import java.util.List;
+
 public class IOSimulator implements IO {
 
-	private String[] comandi;
-	private String[] messaggi;
+	private List<String> comandi;
+	private List<String> messaggi;
 	private int comandoCorrente;
 	private int messaggioCorrente;
 	
-	public IOSimulator(String[] inputComandi, String[] output) {
+	public IOSimulator(List<String> inputComandi, List<String> output) {
 		this.messaggi=output; 
 		this.comandi=inputComandi;
 		this.comandoCorrente=0;
@@ -16,25 +18,25 @@ public class IOSimulator implements IO {
 	
 	
 	
-	public String[] getComandi() {
+	public List<String> getComandi() {
 		return comandi;
 	}
 
 
 
-	public void setComandi(String[] comandi) {
+	public void setComandi(List<String> comandi) {
 		this.comandi = comandi;
 	}
 
 
 
-	public String[] getMessaggi() {
+	public List<String> getMessaggi() {
 		return messaggi;
 	}
 
 
 
-	public void setMessaggi(String[] messaggi) {
+	public void setMessaggi(List<String> messaggi) {
 		this.messaggi = messaggi;
 	}
 
@@ -67,8 +69,8 @@ public class IOSimulator implements IO {
 	@Override
 	public void mostraMessaggio(String messaggio) {
 		// TODO Auto-generated method stub
-		if(messaggioCorrente<messaggi.length) {
-			messaggi[messaggioCorrente]=messaggio;
+		if(messaggioCorrente<messaggi.size()) {
+			messaggi.set(messaggioCorrente, messaggio);
 			messaggioCorrente++;
 		}
 		
@@ -78,8 +80,8 @@ public class IOSimulator implements IO {
 	@Override
 	public String leggiRiga() {
 		// TODO Auto-generated method stub
-		if(comandoCorrente<comandi.length) {
-			String riga=comandi[comandoCorrente];
+		if(comandoCorrente<comandi.size()) {
+			String riga=comandi.get(comandoCorrente);
 			comandoCorrente++;
 			return riga;
 		}
